@@ -1,36 +1,16 @@
-import { Container, Grid } from '@mui/material'
-import Navbar from './components/Navbar'
-import Card from './components/Card'
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Post from "./pages/Post";
+import Homepage from "./pages/Homepage";
 
 function App() {
   return (
-    <div>
-      <Navbar />
-      <Container maxWidth={false}  style={{ paddingLeft: 0, paddingRight: 0 }}>
-        <Grid container justifyContent="center">
-          <Grid item xs={4}>
-            <div style={{ backgroundColor: '#f0f0f0', height: '100vh' }}>
-              Left Column
-            </div>
-          </Grid>
-
-          <Grid item xs={4}>
-            <div style={{ backgroundColor: '#e0e0e0', height: '100vh' }}>
-              <Card />
-              <Card />
-              <Card />
-            </div>
-          </Grid>
-
-          <Grid item xs={4}>
-            <div style={{ backgroundColor: '#d0d0d0', height: '100vh' }}>
-              Right Column
-            </div>
-          </Grid>
-        </Grid>
-      </Container>
-    </div>
-  )
+    <Router>
+      <Routes>
+        <Route path="/" element={<Homepage />} />
+        <Route path="/post" element={<Post />} />
+      </Routes>
+    </Router>
+  );
 }
 
-export default App
+export default App;
