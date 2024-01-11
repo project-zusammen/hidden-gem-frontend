@@ -1,4 +1,4 @@
-import { Box, Card, CardMedia, Container, Grid, ImageList, ImageListItem, Typography, Chip, IconButton, Paper, Stack } from "@mui/material";
+import { Box, Card, CardMedia, Container, Grid, ImageList, ImageListItem, Typography, Chip, IconButton, Paper, Stack, TextField, Button } from "@mui/material";
 import Navbar from "../components/Navbar";
 import images from "../data/images";
 import chipLists from "../data/chipLists";
@@ -94,6 +94,15 @@ const Post = () => {
             </Stack>
           </Grid>
         </Grid>
+        <Box component="form" sx={{ display: "flex", flexDirection: "column", gap: 2, marginY: 5 }}>
+          <Typography variant="h6" sx={{ fontSize: 24, fontWeight: 700 }}>
+            Comments
+          </Typography>
+          <TextField id="outlined-basic" label="Write a comment" variant="outlined" multiline rows={3} />
+          <Button variant="contained" type="submit" sx={{ width: "10%", alignSelf: "end", backgroundColor: "#0bda73", ":hover": { backgroundColor: "#0ff582" }, boxShadow: "none" }}>
+            Submit
+          </Button>
+        </Box>
       </Container>
     </>
   );
