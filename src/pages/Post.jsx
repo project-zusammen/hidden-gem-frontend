@@ -1,6 +1,11 @@
-import { Box, Card, CardMedia, Container, Grid, ImageList, ImageListItem, Typography } from "@mui/material";
+import { Box, Card, CardMedia, Container, Grid, ImageList, ImageListItem, Typography, Chip, IconButton, Paper, Stack } from "@mui/material";
 import Navbar from "../components/Navbar";
 import images from "../data/images";
+import chipLists from "../data/chipLists";
+import ArrowCircleUpIcon from "@mui/icons-material/ArrowCircleUp";
+import ArrowCircleDownIcon from "@mui/icons-material/ArrowCircleDown";
+import BookmarkIcon from "@mui/icons-material/Bookmark";
+import ErrorIcon from "@mui/icons-material/Error";
 
 function srcset(image, size, rows = 1, cols = 1) {
   return {
@@ -54,6 +59,39 @@ const Post = () => {
               those seeking an exclusive retreat amidst the vibrant heartbeat of the city. For those fortunate enough to discover it, Milano Hotel unveils a world where sophistication meets tranquility—a true hidden gem waiting to be
               cherished.
             </Typography>
+          </Grid>
+          <Grid item xs={3}>
+            <Stack useFlexGap spacing={2} sx={{ padding: 2, backgroundColor: "#DCE9E1", borderRadius: 1, boxShadow: "none" }}>
+              <Typography>Category: Hotel</Typography>
+              <Stack direction="row" useFlexGap spacing={1} flexWrap="wrap">
+                {chipLists.map((chip) => (
+                  <Chip label={chip.label} key={chip.label} sx={{ backgroundColor: "#FFDF82", borderRadius: 2 }} />
+                ))}
+              </Stack>
+              <Paper sx={{ padding: 1, boxShadow: "none", display: "flex", alignItems: "center", justifyContent: "center", gap: 1 }}>
+                <IconButton sx={{ color: "green" }}>
+                  <ArrowCircleUpIcon />
+                </IconButton>
+                <Typography variant="body2">10 Upvotes</Typography>
+                <IconButton sx={{ color: "red" }}>
+                  <ArrowCircleDownIcon />
+                </IconButton>
+              </Paper>
+              <Stack direction="row" spacing={2} sx={{ paddingTop: 5 }}>
+                <Stack direction="row" alignItems="center">
+                  <IconButton sx={{ color: "black" }}>
+                    <BookmarkIcon />
+                  </IconButton>
+                  <Typography variant="body2">Bookmark</Typography>
+                </Stack>
+                <Stack direction="row" alignItems="center">
+                  <IconButton sx={{ color: "red" }}>
+                    <ErrorIcon />
+                  </IconButton>
+                  <Typography variant="body2">Report</Typography>
+                </Stack>
+              </Stack>
+            </Stack>
           </Grid>
         </Grid>
       </Container>
