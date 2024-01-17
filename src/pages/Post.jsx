@@ -1,4 +1,4 @@
-import { Box, Card, CardMedia, Container, Grid, ImageList, ImageListItem, Typography, Chip, IconButton, Paper, Stack, TextField, Button } from "@mui/material";
+import { Box, Card, CardMedia, Container, Grid, ImageList, ImageListItem, Typography, Chip, IconButton, Paper, Stack, TextField, Button, Avatar } from "@mui/material";
 import Navbar from "../components/Navbar";
 import images from "../data/images";
 import chipLists from "../data/chipLists";
@@ -102,6 +102,41 @@ const Post = () => {
           <Button variant="contained" type="submit" sx={{ width: "10%", alignSelf: "end", backgroundColor: "#0bda73", ":hover": { backgroundColor: "#0ff582" }, boxShadow: "none" }}>
             Submit
           </Button>
+        </Box>
+
+        <Box sx={{ border: 1, padding: 2, borderRadius: 1 }}>
+          <Grid container spacing={2}>
+            <Grid item xs={1} sx={{ display: "flex", alignItems: "start", justifyContent: "center" }}>
+              <Avatar />
+            </Grid>
+            <Grid item xs={11}>
+              <Stack spacing={2} sx={{ marginBottom: 3 }}>
+                <Typography variant="h6" sx={{ fontSize: 16, fontWeight: 700 }}>
+                  Username
+                </Typography>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatum rem odio illo earum quam provident? Quibusdam itaque ipsam esse sed saepe neque delectus necessitatibus? Neque optio molestiae molestias voluptatem dolor!
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Amet, facere. Itaque recusandae voluptate sequi voluptatibus odit! Recusandae reiciendis dolor fugit. Amet ad, excepturi voluptas tempora corrupti ipsa quis illum
+                distinctio?
+              </Stack>
+              <Stack direction="row" spacing={2} sx={{ gap: 1 }}>
+                <Stack direction="row" alignItems="center">
+                  <IconButton sx={{ color: "red", padding: 1, paddingLeft: 0 }}>
+                    <ErrorIcon />
+                  </IconButton>
+                  <Typography variant="body2">Report</Typography>
+                </Stack>
+                <Paper sx={{ boxShadow: "none", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  <IconButton sx={{ color: "green" }}>
+                    <ArrowCircleUpIcon />
+                  </IconButton>
+                  <Typography variant="body2">10 Upvotes</Typography>
+                  <IconButton sx={{ color: "red" }}>
+                    <ArrowCircleDownIcon />
+                  </IconButton>
+                </Paper>
+              </Stack>
+            </Grid>
+          </Grid>
         </Box>
       </Container>
     </>
