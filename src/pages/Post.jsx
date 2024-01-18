@@ -7,8 +7,6 @@ import ArrowCircleDownIcon from "@mui/icons-material/ArrowCircleDown";
 import BookmarkIcon from "@mui/icons-material/Bookmark";
 import ErrorIcon from "@mui/icons-material/Error";
 
-console.log(images);
-
 const Post = () => {
   function srcset(image, size, rows = 1, cols = 1) {
     return {
@@ -67,7 +65,7 @@ const Post = () => {
               <Typography>Category: Hotel</Typography>
               <Stack direction="row" useFlexGap spacing={1} flexWrap="wrap">
                 {chipLists.map((chip) => (
-                  <Chip label={chip.label} key={chip.label} sx={{ backgroundColor: "#FFDF82", borderRadius: 1 }} />
+                  <Chip label={chip.label} key={chip.id} sx={{ backgroundColor: "#FFDF82", borderRadius: 1 }} />
                 ))}
               </Stack>
               <Paper sx={{ padding: 1, boxShadow: "none", display: "flex", alignItems: "center", justifyContent: "center", gap: 1 }}>
