@@ -1,4 +1,4 @@
-import { Box, Card, CardMedia, Container, Grid, ImageList, ImageListItem, Typography, Chip, IconButton, Paper, Stack, TextField, Button, Avatar } from "@mui/material";
+import { ImageList, ImageListItem, Box, Card, CardMedia, Container, Grid, Typography, Chip, IconButton, Paper, Stack, TextField, Button, Avatar } from "@mui/material";
 import Navbar from "../components/Navbar";
 import images from "../data/images";
 import chipLists from "../data/chipLists";
@@ -7,16 +7,16 @@ import ArrowCircleDownIcon from "@mui/icons-material/ArrowCircleDown";
 import BookmarkIcon from "@mui/icons-material/Bookmark";
 import ErrorIcon from "@mui/icons-material/Error";
 
-function srcset(image, size, rows = 1, cols = 1) {
-  return {
-    src: `${image}?w=${size * cols}&h=${size * rows}&fit=crop&auto=format`,
-    srcSet: `${image}?w=${size * cols}&h=${size * rows}&fit=crop&auto=format&dpr=2 2x`,
-  };
-}
-
 console.log(images);
 
 const Post = () => {
+  function srcset(image, size, rows = 1, cols = 1) {
+    return {
+      src: `${image}?w=${size * cols}&h=${size * rows}&fit=crop&auto=format`,
+      srcSet: `${image}?w=${size * cols}&h=${size * rows}&fit=crop&auto=format&dpr=2 2x`,
+    };
+  }
+
   return (
     <>
       <Navbar />
@@ -32,13 +32,15 @@ const Post = () => {
             Milan
           </Typography>
         </Box>
-        <ImageList sx={{ width: "100%", height: 600 }} variant="quilted" cols={4} rowHeight={150}>
-          {images.map((image) => (
-            <ImageListItem key={image.name} cols={image.cols || 1} rows={image.rows || 1.5}>
-              <img {...srcset(image.source, 150, image.rows, image.cols)} alt={image.title} loading="lazy" />
+
+        <ImageList sx={{ height: 450, borderRadius: 1 }} variant="quilted" cols={4} rowHeight={223}>
+          {images.map((item) => (
+            <ImageListItem key={item.name} cols={item.cols || 1} rows={item.rows || 1}>
+              <img {...srcset(item.source, 223, item.rows, item.cols)} alt={item.title} loading="lazy" />
             </ImageListItem>
           ))}
         </ImageList>
+
         <Grid container spacing={2}>
           <Grid item xs={9}>
             <Typography variant="body2" align="justify">
@@ -65,7 +67,7 @@ const Post = () => {
               <Typography>Category: Hotel</Typography>
               <Stack direction="row" useFlexGap spacing={1} flexWrap="wrap">
                 {chipLists.map((chip) => (
-                  <Chip label={chip.label} key={chip.label} sx={{ backgroundColor: "#FFDF82", borderRadius: 2 }} />
+                  <Chip label={chip.label} key={chip.label} sx={{ backgroundColor: "#FFDF82", borderRadius: 1 }} />
                 ))}
               </Stack>
               <Paper sx={{ padding: 1, boxShadow: "none", display: "flex", alignItems: "center", justifyContent: "center", gap: 1 }}>
