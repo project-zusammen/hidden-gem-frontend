@@ -42,3 +42,13 @@ export default function Footer() {
     </footer>
   );
 };
+
+// src/components/Footer/index.test.jsx
+// import React from 'react';
+// import { render } from '@testing-library/react';
+// import Footer from './index';
+
+// test('renders Footer component', () => {
+//   render(<Footer />);
+//   // Add assertions as needed
+// });
