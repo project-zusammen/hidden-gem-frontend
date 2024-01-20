@@ -31,6 +31,8 @@ List the main features of your application.
 
 2. Run `npm install`
 
-3. Run `npm run`
+3. Run `npm run dev`
 
 4. Run the test: `npm test`
+
+5. Run a test on a specific file: `npm test {file-path}`
