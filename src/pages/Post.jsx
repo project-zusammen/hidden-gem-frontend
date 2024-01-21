@@ -40,7 +40,7 @@ const Post = () => {
         </ImageList>
 
         <Grid container spacing={2}>
-          <Grid item xs={9}>
+          <Grid item md={9}>
             <Typography variant="body2" align="justify">
               Nestled amid the bustling cityscape lies Milano Hotel, a true hidden gem that offers an unparalleled retreat. Tucked away from the urban buzz, this haven boasts a serene ambiance that instantly captivates. From the moment you
               step into its welcoming embrace, you re enveloped in a blend of elegance and intimacy. What sets Milano Hotel apart is its understated charm and personalized service. The discreet facade belies the wealth of comfort and
@@ -60,7 +60,7 @@ const Post = () => {
               cherished.
             </Typography>
           </Grid>
-          <Grid item xs={3}>
+          <Grid item md={3}>
             <Stack useFlexGap spacing={2} sx={{ padding: 2, backgroundColor: "#DCE9E1", borderRadius: 1, boxShadow: "none" }}>
               <Typography>Category: Hotel</Typography>
               <Stack direction="row" useFlexGap spacing={1} flexWrap="wrap">
@@ -77,7 +77,7 @@ const Post = () => {
                   <ArrowCircleDownIcon />
                 </IconButton>
               </Paper>
-              <Stack direction="row" spacing={2} sx={{ paddingTop: 5 }}>
+              <Stack direction="row" spacing={2} sx={{ paddingTop: { md: 5 } }}>
                 <Stack direction="row" alignItems="center">
                   <IconButton sx={{ color: "black" }}>
                     <BookmarkIcon />
@@ -106,10 +106,10 @@ const Post = () => {
 
         <Box sx={{ border: 1, padding: 2, borderRadius: 1 }}>
           <Grid container spacing={2}>
-            <Grid item xs={1} sx={{ display: "flex", alignItems: "start", justifyContent: "center" }}>
+            <Grid item sm={1} sx={{ display: "flex", alignItems: "start", justifyContent: "center" }}>
               <Avatar />
             </Grid>
-            <Grid item xs={11}>
+            <Grid item sm={11}>
               <Stack spacing={2} sx={{ marginBottom: 3 }}>
                 <Typography variant="h6" sx={{ fontSize: 16, fontWeight: 700 }}>
                   Username
