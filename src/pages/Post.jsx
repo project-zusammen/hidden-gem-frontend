@@ -2,10 +2,9 @@ import { ImageList, ImageListItem, Box, Card, CardMedia, Container, Grid, Typogr
 import Navbar from "../components/Navbar";
 import images from "../data/images";
 import chipLists from "../data/chipLists";
-import ArrowCircleUpIcon from "@mui/icons-material/ArrowCircleUp";
-import ArrowCircleDownIcon from "@mui/icons-material/ArrowCircleDown";
 import BookmarkIcon from "@mui/icons-material/Bookmark";
 import ErrorIcon from "@mui/icons-material/Error";
+import Upvotes from "../components/Upvotes";
 
 const Post = () => {
   function srcset(image, size, rows = 1, cols = 1) {
@@ -69,13 +68,7 @@ const Post = () => {
                 ))}
               </Stack>
               <Paper sx={{ padding: 1, boxShadow: "none", display: "flex", alignItems: "center", justifyContent: "center", gap: 1 }}>
-                <IconButton sx={{ color: "green" }}>
-                  <ArrowCircleUpIcon />
-                </IconButton>
-                <Typography variant="body2">10 Upvotes</Typography>
-                <IconButton sx={{ color: "red" }}>
-                  <ArrowCircleDownIcon />
-                </IconButton>
+                <Upvotes count={12} />
               </Paper>
               <Stack direction="row" spacing={2} sx={{ paddingTop: { md: 5 } }}>
                 <Stack direction="row" alignItems="center">
@@ -126,13 +119,7 @@ const Post = () => {
                   <Typography variant="body2">Report</Typography>
                 </Stack>
                 <Paper sx={{ boxShadow: "none", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                  <IconButton sx={{ color: "green" }}>
-                    <ArrowCircleUpIcon />
-                  </IconButton>
-                  <Typography variant="body2">10 Upvotes</Typography>
-                  <IconButton sx={{ color: "red" }}>
-                    <ArrowCircleDownIcon />
-                  </IconButton>
+                  <Upvotes count={4} />
                 </Paper>
               </Stack>
             </Grid>
