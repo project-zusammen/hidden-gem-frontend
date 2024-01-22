@@ -19,7 +19,7 @@ const Post = () => {
       <Card sx={{ borderRadius: 0 }}>
         <CardMedia component="img" height="194" image="/images/hero-image.webp" alt="hero-image" />
       </Card>
-      <Container maxWidth={false}>
+      <Container maxWidth={false} sx={{ marginBottom: 8 }}>
         <Box sx={{ marginY: 5, display: "flex", flexDirection: "column" }}>
           <Typography variant="h6" sx={{ fontSize: 24, fontWeight: 700 }}>
             Milano Hotel
@@ -29,7 +29,7 @@ const Post = () => {
           </Typography>
         </Box>
 
-        <ImageList sx={{ height: 450, borderRadius: 1 }} variant="quilted" cols={4} rowHeight={223}>
+        <ImageList sx={{ height: 450, borderRadius: 1, marginBottom: 4 }} variant="quilted" cols={4} rowHeight={223}>
           {images.map((item) => (
             <ImageListItem key={item.name} cols={item.cols || 1} rows={item.rows || 1}>
               <img {...srcset(item.source, 223, item.rows, item.cols)} alt={item.title} loading="lazy" />
