@@ -17,7 +17,7 @@ export default function Footer() {
   const theme = useTheme();
 
   return (
-    <footer style={{ backgroundColor: theme.palette.secondary.main, padding: "46px" }}>
+    <footer style={{ backgroundColor: theme.palette.secondary.main, padding: "24px" }}>
       <Grid container justifyContent="space-between" alignItems="center">
         <Grid item alignItems="center">
           <Grid container alignItems="center">
@@ -44,13 +44,3 @@ export default function Footer() {
     </footer>
   );
 }
-
-// src/components/Footer/index.test.jsx
-// import React from 'react';
-// import { render } from '@testing-library/react';
-// import Footer from './index';
-
-// test('renders Footer component', () => {
-//   render(<Footer />);
-//   // Add assertions as needed
-// });
