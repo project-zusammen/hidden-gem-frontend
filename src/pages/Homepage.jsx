@@ -1,11 +1,9 @@
 import { Container, Grid } from "@mui/material";
-import Navbar from "../components/Navbar";
 import Card from "../components/Card";
 
 const Homepage = () => {
   return (
     <>
-      <Navbar />
       <Container maxWidth={false} style={{ paddingLeft: 0, paddingRight: 0 }}>
         <Grid container justifyContent="center">
           <Grid item xs={4}>
@@ -14,8 +12,6 @@ const Homepage = () => {
 
           <Grid item xs={4}>
             <div style={{ backgroundColor: "#e0e0e0", height: "100vh" }}>
-              <Card />
-              <Card />
               <Card />
             </div>
           </Grid>

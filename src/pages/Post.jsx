@@ -1,5 +1,5 @@
 import { ImageList, ImageListItem, Box, Card, CardMedia, Container, Grid, Typography, Chip, IconButton, Paper, Stack, TextField, Button, Avatar } from "@mui/material";
-import Navbar from "../components/Navbar";
+
 import images from "../data/images";
 import chipLists from "../data/chipLists";
 import BookmarkIcon from "@mui/icons-material/Bookmark";
@@ -16,7 +16,6 @@ const Post = () => {
 
   return (
     <>
-      <Navbar />
       <Card sx={{ borderRadius: 0 }}>
         <CardMedia component="img" height="194" image="/images/hero-image.webp" alt="hero-image" />
       </Card>
