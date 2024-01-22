@@ -1,0 +1,27 @@
+{
+  "extends": [
+    "eslint:recommended",
+    "plugin:jest/recommended",
+    "plugin:react/recommended",
+    "plugin:testing-library/react"
+  ],
+  "rules": {
+    "indent": ["error", 2],
+    "react/react-in-jsx-scope": "off",
+    "testing-library/render-result-naming-convention": "error",
+    "react-refresh/only-export-components": [
+      "warn",
+      { "allowConstantExport": true }
+    ]
+  },
+  "plugins": ["jest", "react", "testing-library", "react-refresh"],
+  "env": {
+    "browser": true,
+    "node": true,
+    "jest/globals": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 2015,
+    "sourceType": "module"
+  }
+}
