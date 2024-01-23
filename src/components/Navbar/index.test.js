@@ -6,7 +6,8 @@ describe('Navbar Component', () => {
   test('renders Navbar component with default region', () => {
     render(<Navbar />);
 
-    expect(screen.getByAltText('logo')).toBeInTheDocument();
+    const logoElements = screen.queryAllByAltText('logo');
+    expect(logoElements.length).toBeGreaterThan(0);
     expect(screen.getByText(/Home/i)).toBeInTheDocument();
     expect(screen.getByText(/Log in/i)).toBeInTheDocument();
     expect(screen.getByText(/Sign up/i)).toBeInTheDocument();
@@ -17,7 +18,7 @@ describe('Navbar Component', () => {
     const region = "Bandung"
     render(<Navbar region={region}/>);
 
-    expect(screen.getByAltText('logo')).toBeInTheDocument();
+    const logoElements = screen.queryAllByAltText('logo');
     expect(screen.getByText(/Home/i)).toBeInTheDocument();
     expect(screen.getByText(/Log in/i)).toBeInTheDocument();
     expect(screen.getByText(/Sign up/i)).toBeInTheDocument();

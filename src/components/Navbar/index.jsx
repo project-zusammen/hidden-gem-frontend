@@ -10,10 +10,10 @@ import {
   MenuList,
   MenuItem,
 } from "@mui/material";
-import { ArrowDropDown } from "@mui/icons-material";
 import React, { useRef, useState } from "react";
 import logo from "/images/Logo.png";
 import MenuIcon from "@mui/icons-material/Menu";
+import ArrowDropDown from "@mui/icons-material/ArrowDropDown";
 
 const Navbar = ({ region }) => {
   const [navStatus, setNavStatus] = useState(false);
