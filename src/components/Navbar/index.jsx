@@ -1,9 +1,30 @@
-import { AppBar, Toolbar, Typography, Grid, Box, Button } from "@mui/material";
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  Grid,
+  Box,
+  Button,
+  IconButton,
+  Menu,
+  MenuList,
+  MenuItem,
+} from "@mui/material";
 import { ArrowDropDown } from "@mui/icons-material";
-import React from "react";
+import React, { useRef, useState } from "react";
 import logo from "/images/Logo.png";
+import MenuIcon from "@mui/icons-material/Menu";
 
 const Navbar = ({ region }) => {
+  const [navStatus, setNavStatus] = useState(false);
+  const iconButtonRef = useRef();
+  const openNav = () => {
+    setNavStatus(true);
+  };
+  const closeNav = (e) => {
+    setNavStatus(false);
+  };
+  const anchorEl = React.useRef();
   if (!region) {
     region = "Jakarta";
   }
@@ -12,10 +33,18 @@ const Navbar = ({ region }) => {
       position="static"
       sx={{ bgcolor: "neutral.light", padding: "0 46px" }}
     >
-      <Toolbar sx={{ height: "80px" }}>
+      <Toolbar sx={{ display: { xs: "none", md: "flex" }, height: "80px" }}>
         <Grid container alignItems="center" justifyContent="space-between">
           <Grid item xs={4}>
-            <Box component="img" sx={{ height: 28 }} alt="logo" src={logo} />
+            <Box
+              component="img"
+              alt="logo"
+              src={logo}
+              sx={{
+                height: 28,
+                flexGrow: 1,
+              }}
+            />
           </Grid>
 
           <Grid item sx={{ flexGrow: 1 }} xs={4}>
@@ -51,7 +80,14 @@ const Navbar = ({ region }) => {
             </Grid>
           </Grid>
 
-          <Grid item xs={4} spacing={0} container justifyContent={"flex-end"}>
+          <Grid
+            item
+            xs={4}
+            spacing={0}
+            container
+            justifyContent={"flex-end"}
+            sx={{ display: { xs: "none", md: "flex" } }}
+          >
             <Grid item>
               <Button
                 style={{ textTransform: "none" }}
@@ -85,6 +121,53 @@ const Navbar = ({ region }) => {
           </Grid>
         </Grid>
       </Toolbar>
+      <Box
+        sx={{
+          display: {
+            xs: "flex",
+            md: "none",
+            alignItems: "center",
+            justifyContent: "start",
+          },
+          padding: "10px",
+        }}
+      >
+        <IconButton
+          size="large"
+          edge="start"
+          color="inherit"
+          onClick={openNav}
+          ref={iconButtonRef}
+        >
+          <MenuIcon />
+        </IconButton>
+        <Menu
+          anchorEl={iconButtonRef.current}
+          open={Boolean(navStatus)}
+          onClose={closeNav}
+          sx={{
+            display: {
+              xs: "flex",
+              md: "none",
+            },
+          }}
+        >
+          <MenuList>
+            <MenuItem>Home</MenuItem>
+            <MenuItem>{"Your region: " + region}</MenuItem>
+            <MenuItem>Log in</MenuItem>
+            <MenuItem>Sign up</MenuItem>
+          </MenuList>
+        </Menu>
+        <Box
+          component="img"
+          alt="logo"
+          src={logo}
+          sx={{
+            height: 28,
+          }}
+        ></Box>
+      </Box>
     </AppBar>
   );
 };
