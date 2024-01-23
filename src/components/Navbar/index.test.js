@@ -19,6 +19,7 @@ describe('Navbar Component', () => {
     render(<Navbar region={region}/>);
 
     const logoElements = screen.queryAllByAltText('logo');
+    expect(logoElements.length).toBeGreaterThan(0);
     expect(screen.getByText(/Home/i)).toBeInTheDocument();
     expect(screen.getByText(/Log in/i)).toBeInTheDocument();
     expect(screen.getByText(/Sign up/i)).toBeInTheDocument();
