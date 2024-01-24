@@ -8,4 +8,10 @@ describe("Upvotes Component", () => {
 
     expect(screen.getByText(/Upvotes/)).toBeInTheDocument();
   });
+
+  test("buttons should be rendered", () => {
+    render(<Upvotes count={10} />);
+
+    expect(screen.getAllByRole("button")).toHaveLength(2);
+  });
 });
