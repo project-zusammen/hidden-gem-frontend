@@ -14,4 +14,14 @@ describe("Upvotes Component", () => {
 
     expect(screen.getAllByRole("button")).toHaveLength(2);
   });
+
+  test("displays the correct count", () => {
+    const testCount = 10;
+    render(<Upvotes count={testCount} />);
+
+    const countElement = screen.getByText(`${testCount} Upvotes`);
+
+    expect(countElement).toBeInTheDocument();
+    expect(countElement).toHaveTextContent(`${testCount} Upvotes`);
+  });
 });
