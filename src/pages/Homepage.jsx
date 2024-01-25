@@ -1,3 +1,4 @@
+import React from "react";
 import { Container, Grid } from "@mui/material";
 import Card from "../components/Card";
 
@@ -11,7 +12,7 @@ const Homepage = () => {
           </Grid>
 
           <Grid item xs={4}>
-            <div style={{ backgroundColor: "#e0e0e0", height: "100vh" }}>
+            <div style={{ backgroundColor: "#e0e0e0", height: "100vh" }} data-testid="card">
               <Card />
             </div>
           </Grid>
