@@ -17,7 +17,7 @@ export default function Footer() {
   const theme = useTheme();
 
   return (
-    <footer style={{ backgroundColor: theme.palette.secondary.main, padding: "24px" }}>
+    <footer style={{ backgroundColor: theme.palette.secondary.main, padding: "46px" }}>
       <Grid container justifyContent="space-between" alignItems="center">
         <Grid item alignItems="center">
           <Grid container alignItems="center">
