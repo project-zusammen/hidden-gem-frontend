@@ -19,7 +19,7 @@ const Post = () => {
       <Card sx={{ borderRadius: 0 }}>
         <CardMedia component="img" height="194" image="/images/hero-image.webp" alt="hero-image" />
       </Card>
-      <Container maxWidth={false} sx={{ marginBottom: 8 }}>
+      <Container disableGutters maxWidth={false} sx={{ marginBottom: 8, paddingLeft: 6, paddingRight: 6 }}>
         <Box sx={{ marginY: 5, display: "flex", flexDirection: "column" }}>
           <Typography variant="h6" sx={{ fontSize: 24, fontWeight: 700 }}>
             Milano Hotel
