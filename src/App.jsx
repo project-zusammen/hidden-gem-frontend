@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Post from "./pages/Post";
+import Review from "./pages/Review";
 import Homepage from "./pages/Homepage";
 import { ThemeProvider } from "@mui/material";
 import Navbar from "./components/Navbar";
@@ -13,7 +13,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Homepage />} />
-          <Route path="/post" element={<Post />} />
+          <Route path="/review" element={<Review />} />
         </Routes>
       </Router>
       <Footer />

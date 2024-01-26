@@ -1,27 +1,27 @@
 import React from "react";
-import Post from "./Post";
+import Review from "./Review";
 import { render, screen, fireEvent } from "@testing-library/react";
 
-describe("Post", () => {
+describe("Review", () => {
   test("renders Post", () => {
-    render(<Post />);
+    render(<Review />);
   });
 
   test("renders the hero image", () => {
-    render(<Post />);
+    render(<Review />);
 
     expect(screen.getByRole("img", { name: /hero-image/i })).toBeInTheDocument();
   });
 
   test("users can write comment", () => {
-    render(<Post />);
+    render(<Review />);
 
     fireEvent.change(screen.getByLabelText(/Write a comment/i), { target: { value: "Nice place!" } });
     expect(screen.getByLabelText(/Write a comment/i).value).toBe("Nice place!");
   });
 
   test("renders the images", () => {
-    render(<Post />);
+    render(<Review />);
     const images = screen.getAllByRole("img");
     expect(images.length).toBe(6);
   });
