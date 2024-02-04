@@ -1,29 +1,47 @@
-// src/styles/Theme.js
-import { createTheme } from '@mui/material/styles';
+import createTheme from "@mui/material/styles/createTheme";
 
 const theme = createTheme({
   typography: {
-    fontFamily: 'Open Sans, sans-serif',
+    h1: {
+      fontSize: "24px",
+      fontWeight: 600,
+    },
+    h3: {
+      fontSize: "16px",
+      fontWeight: 500,
+    },
+    h3Bold: {
+      fontSize: "16px",
+      fontWeight: 700,
+    },
+    fontFamily: [
+      '"Open Sans"',
+      "BlinkMacSystemFont",
+      '"Segoe UI"',
+      "Roboto",
+      '"Helvetica Neue"',
+      "Arial",
+      "sans-serif",
+      '"Apple Color Emoji"',
+      '"Segoe UI Emoji"',
+      '"Segoe UI Symbol"',
+    ].join(","),
   },
   palette: {
     primary: {
-      main: '#50C878', // customize the primary color
+      main: "#50C878",
+      light: "#D0E2D6",
     },
     secondary: {
-      main: '#FFDF82', // customize the secondary color
+      main: "#FFDF82",
     },
-    success: {
-      main: '#86EB57', // customize the secondary color
+    neutral: {
+      main: "#849D8C",
+      light: "#F6FFF9",
+      dark: "#15331F",
+      white: "#FEFEFE",
     },
-    warning: {
-      main: '#EBCA57', // customize the secondary color
-    },
-    danger: {
-      main: '#E58C8C', // customize the secondary color
-    },
-    // other color customizations...
   },
-  // other theme customizations...
 });
 
 export default theme;
