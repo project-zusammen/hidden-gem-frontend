@@ -19,7 +19,15 @@
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.21.1"
+    "react-router-dom": "^6.21.1",
+    "dependencies": {
+      "fsevents": {
+        "version": "2.3.3",
+        "optional": true,
+        "os": ["darwin"]
+      }
+    }
+    
   },
   "devDependencies": {
     "@babel/core": "^7.23.7",
