@@ -1,25 +1,41 @@
-name: Run Tests on Pull Request
+name: Build and Test
 
 on:
   pull_request:
-    branches:
-      - main  # Adjust the branch as needed
 
 jobs:
-  test:
-    runs-on: macos-latest
-
+  build_and_test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [14, 16]
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
+      - name: Use Node.js v20.2.0
+        uses: actions/setup-node@v2
         with:
-          node-version: 14
+          node-version: v20.2.0
 
-      - name: Install Dependencies
-        run: npm install --legacy-peer-deps
+      - name: Install dependencies
+        run: npm ci
 
-      - name: Run Tests
+      - name: Build the project
+        run: npm run build
+
+      - name: Run tests
         run: npm test
+
+      - name: Upload test results
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-results
+          path: ./test-results/**/*.xml
+
+      - name: Fail workflow if tests fail
+        uses: EnricoMi/failing-workflow@v1
+        if: always()
+        with:
+          condition: ${{ github.event.status != 'failure' && runner.os == 'Linux' }}
+
