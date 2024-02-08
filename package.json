@@ -24,11 +24,6 @@
       "version": "2.3.3",
       "optional": true,
       "os": ["darwin"]
-    },
-    "@esbuild/android-arm64": {
-      "version": "0.19.9",
-      "optional": true,
-      "os": ["android"]
     }
   },
   "devDependencies": {
