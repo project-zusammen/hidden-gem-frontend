@@ -20,14 +20,16 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.21.1",
-    "dependencies": {
-      "fsevents": {
-        "version": "2.3.3",
-        "optional": true,
-        "os": ["darwin"]
-      }
+    "fsevents": {
+      "version": "2.3.3",
+      "optional": true,
+      "os": ["darwin"]
+    },
+    "@esbuild/android-arm64": {
+      "version": "0.19.9",
+      "optional": true,
+      "os": ["android"]
     }
-    
   },
   "devDependencies": {
     "@babel/core": "^7.23.7",
