@@ -33,7 +33,7 @@ const theme = createTheme({
       light: "#D0E2D6",
     },
     secondary: {
-      main: "#FFDF82",
+      main: "#000000",
     },
     neutral: {
       main: "#849D8C",
