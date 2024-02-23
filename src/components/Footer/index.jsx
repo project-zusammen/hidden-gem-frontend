@@ -17,12 +17,26 @@ export default function Footer() {
   const theme = useTheme();
 
   return (
-    <footer style={{ backgroundColor: theme.palette.secondary.main, padding: "46px" }}>
+    <footer
+      style={{ backgroundColor: theme.palette.third.main, padding: "46px" }}
+    >
       <Grid container justifyContent="space-between" alignItems="center">
         <Grid item alignItems="center">
           <Grid container alignItems="center">
-            <img src="./images/logo-hiddengem.png" alt="Logo" style={{ height: "30px", marginRight: "8px" }} />
-            <div style={{ width: "4px", height: "4px", backgroundColor: "black", borderRadius: "50%", margin: "6px 8px 0 8px" }} />
+            <img
+              src="./images/logo-hiddengem.png"
+              alt="Logo"
+              style={{ height: "30px", marginRight: "8px" }}
+            />
+            <div
+              style={{
+                width: "4px",
+                height: "4px",
+                backgroundColor: "black",
+                borderRadius: "50%",
+                margin: "6px 8px 0 8px",
+              }}
+            />
             <Typography variant="body2" style={{ margin: "6px 8px 0 8px" }}>
               Crafted with passion by Team Evolvy
             </Typography>
