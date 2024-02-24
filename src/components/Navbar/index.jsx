@@ -1,19 +1,9 @@
-import {
-  AppBar,
-  Toolbar,
-  Typography,
-  Grid,
-  Box,
-  Button,
-  IconButton,
-  Menu,
-  MenuList,
-  MenuItem,
-} from "@mui/material";
+import { AppBar, Toolbar, Typography, Grid, Box, Button, IconButton, Menu, MenuList, MenuItem } from "@mui/material";
 import React, { useRef, useState } from "react";
 import logo from "/images/Logo.png";
 import MenuIcon from "@mui/icons-material/Menu";
 import ArrowDropDown from "@mui/icons-material/ArrowDropDown";
+import { Link } from "react-router-dom";
 
 const Navbar = ({ region }) => {
   const [navStatus, setNavStatus] = useState(false);
@@ -29,10 +19,7 @@ const Navbar = ({ region }) => {
     region = "Jakarta";
   }
   return (
-    <AppBar
-      position="static"
-      sx={{ bgcolor: "neutral.light", padding: "0 46px" }}
-    >
+    <AppBar position="static" sx={{ bgcolor: "neutral.light", padding: "0 46px" }}>
       <Toolbar sx={{ display: { xs: "none", md: "flex" }, height: "80px" }}>
         <Grid container alignItems="center" justifyContent="space-between">
           <Grid item xs={4}>
@@ -80,14 +67,7 @@ const Navbar = ({ region }) => {
             </Grid>
           </Grid>
 
-          <Grid
-            item
-            xs={4}
-            spacing={0}
-            container
-            justifyContent={"flex-end"}
-            sx={{ display: { xs: "none", md: "flex" } }}
-          >
+          <Grid item xs={4} spacing={0} container justifyContent={"flex-end"} sx={{ display: { xs: "none", md: "flex" } }}>
             <Grid item>
               <Button
                 style={{ textTransform: "none" }}
@@ -96,10 +76,13 @@ const Navbar = ({ region }) => {
                   "&:hover": {
                     backgroundColor: "primary.light",
                   },
+                  textDecoration: "none",
                 }}
               >
                 <Typography variant="h3Bold" sx={{}}>
-                  Log in
+                  <Link to={"/login"} style={{ textDecoration: "none", color: "inherit" }}>
+                    Log in
+                  </Link>
                 </Typography>
               </Button>
             </Grid>
@@ -132,13 +115,7 @@ const Navbar = ({ region }) => {
           padding: "10px",
         }}
       >
-        <IconButton
-          size="large"
-          edge="start"
-          color="inherit"
-          onClick={openNav}
-          ref={iconButtonRef}
-        >
+        <IconButton size="large" edge="start" color="inherit" onClick={openNav} ref={iconButtonRef}>
           <MenuIcon />
         </IconButton>
         <Menu
