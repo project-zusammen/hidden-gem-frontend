@@ -19,7 +19,7 @@ const Login = () => {
             <Typography variant="body2">Password</Typography>
             <TextField id="outlined-basic" type="password" variant="outlined" />
             <Button variant="contained" type="submit" sx={{ backgroundColor: "#0bda73", ":hover": { backgroundColor: "#0ff582" }, boxShadow: "none" }}>
-              Submit
+              Log in
             </Button>
           </Box>
           <Stack>

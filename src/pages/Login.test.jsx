@@ -28,10 +28,10 @@ describe("Login", () => {
 
     const emailInput = screen.getByLabelText("Email");
     const passwordInput = screen.getByLabelText("Password");
-    const submitButton = screen.getByText("Submit");
+    const loginButton = screen.getByText("Log in");
 
     fireEvent.change(emailInput, { target: { value: "test@example.com" } });
     fireEvent.change(passwordInput, { target: { value: "password123" } });
-    fireEvent.click(submitButton);
+    fireEvent.click(loginButton);
   });
 });
