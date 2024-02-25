@@ -18,9 +18,9 @@ const Login = () => {
           </Box>
           <Box component="form" sx={{ display: "flex", flexDirection: "column", gap: 2, marginY: 5 }}>
             <Typography variant="body2">Email</Typography>
-            <TextField variant="outlined" onChange={(event) => setEmail(event.target.value)} data-testid="email-field" inputProps={{ "data-testid": "email-content" }} />
+            <TextField variant="outlined" onChange={(event) => setEmail(event.target.value)} value={email} data-testid="email-field" inputProps={{ "data-testid": "email-content" }} />
             <Typography variant="body2">Password</Typography>
-            <TextField type="password" variant="outlined" data-testid="password-field" inputProps={{ "data-testid": "password-content" }} onChange={(event) => setPassword(event.target.value)} />
+            <TextField type="password" variant="outlined" data-testid="password-field" inputProps={{ "data-testid": "password-content" }} onChange={(event) => setPassword(event.target.value)} value={password} />
             <Button data-testid="login-button" variant="contained" type="submit" sx={{ backgroundColor: "#0bda73", ":hover": { backgroundColor: "#0ff582" }, boxShadow: "none" }}>
               Log in
             </Button>
