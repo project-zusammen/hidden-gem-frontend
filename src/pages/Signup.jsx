@@ -8,7 +8,7 @@ const SignUp = () => {
   const [password, setPassword] = useState("");
   return (
     <Container maxWidth={false} style={{ paddingLeft: 0, paddingRight: 0 }}>
-      <Paper elevation={2} variant="outlined" sx={{ paddingY: "50px", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", marginTop: "50px", marginBottom: "50px", maxWidth: "500px", marginX: "auto" }}>
+      <Paper variant="outlined" sx={{ paddingY: "50px", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", marginTop: "50px", marginBottom: "50px", maxWidth: "500px", marginX: "auto" }}>
         <Stack spacing={4} sx={{ width: "80%" }}>
           <Box>
             <Typography variant="h1" gutterBottom textAlign={"start"}>
