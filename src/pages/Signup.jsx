@@ -7,7 +7,6 @@ const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  console.log("trigger deployment again");
   return (
     <Container maxWidth={false} style={{ paddingLeft: 0, paddingRight: 0 }}>
       <Paper variant="outlined" sx={{ paddingY: "50px", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", marginTop: "50px", marginBottom: "50px", maxWidth: "500px", marginX: "auto" }}>
