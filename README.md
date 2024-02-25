@@ -36,3 +36,5 @@ List the main features of your application.
 4. Run the test: `npm test`
 
 5. Run a test on a specific file: `npm test {file-path}`
+
+6. Copy. env-template and rename it as .env, fill in the creds
