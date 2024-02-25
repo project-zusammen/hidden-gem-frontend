@@ -4,7 +4,7 @@ import logo from "/images/Logo.png";
 import MenuIcon from "@mui/icons-material/Menu";
 import ArrowDropDown from "@mui/icons-material/ArrowDropDown";
 import { Link } from "react-router-dom";
-import PropTypes from 'prop-types'
+import PropTypes from "prop-types";
 
 const Navbar = ({ region }) => {
   const [navStatus, setNavStatus] = useState(false);
@@ -98,7 +98,9 @@ const Navbar = ({ region }) => {
                 }}
               >
                 <Typography variant="h3Bold" sx={{}}>
-                  Sign up
+                  <Link to={"/signup"} style={{ textDecoration: "none", color: "inherit" }}>
+                    Sign up
+                  </Link>
                 </Typography>
               </Button>
             </Grid>
@@ -151,11 +153,11 @@ const Navbar = ({ region }) => {
 };
 
 Navbar.propTypes = {
-  region: PropTypes.string.isRequired
+  region: PropTypes.string.isRequired,
 };
 
 Navbar.defaultProps = {
-  region: "Jakarta"
+  region: "Jakarta",
 };
 
 export default Navbar;
