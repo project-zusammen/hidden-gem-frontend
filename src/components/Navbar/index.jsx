@@ -4,6 +4,7 @@ import logo from "/images/Logo.png";
 import MenuIcon from "@mui/icons-material/Menu";
 import ArrowDropDown from "@mui/icons-material/ArrowDropDown";
 import { Link } from "react-router-dom";
+import PropTypes from 'prop-types'
 
 const Navbar = ({ region }) => {
   const [navStatus, setNavStatus] = useState(false);
@@ -147,6 +148,10 @@ const Navbar = ({ region }) => {
       </Box>
     </AppBar>
   );
+};
+
+Navbar.propTypes = {
+  region: PropTypes.string.isRequired
 };
 
 export default Navbar;
