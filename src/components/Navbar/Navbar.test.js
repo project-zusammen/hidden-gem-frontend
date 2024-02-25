@@ -1,10 +1,15 @@
 import React from 'react';
+import { BrowserRouter } from "react-router-dom"; 
 import { render, screen } from '@testing-library/react';
 import Navbar from './index';
 
 describe('Navbar Component', () => {
   test('renders Navbar component with default region', () => {
-    render(<Navbar />);
+    render( 
+      <BrowserRouter>
+        <Navbar />
+      </BrowserRouter>
+    );
 
     const logoElements = screen.queryAllByAltText('logo');
     expect(logoElements.length).toBeGreaterThan(0);
@@ -16,7 +21,11 @@ describe('Navbar Component', () => {
 
   test('renders Navbar component with custom region', () => {
     const region = "Bandung"
-    render(<Navbar region={region}/>);
+    render( 
+      <BrowserRouter>
+        <Navbar region={region}/>
+      </BrowserRouter>
+    );
 
     const logoElements = screen.queryAllByAltText('logo');
     expect(logoElements.length).toBeGreaterThan(0);
