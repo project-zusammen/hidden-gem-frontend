@@ -1,8 +1,55 @@
-body, h1, h2, h3, h4, h5, h6, p, ol, ul {
-    margin: 0;
-    padding: 0;
-  }
-  
-  body {
-    font-family: 'Open Sans', sans-serif; /* Add your preferred font-family */
-  }
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ol,
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Open Sans", sans-serif; /* Add your preferred font-family */
+}
+
+.body-post {
+  text-align: center;
+}
+
+.slider-container {
+  margin: 35px auto;
+  width: 1100px;
+  height: 500px;
+  border: 1px solid #50c878;
+  background-color: #50c878;
+  border-radius: 15px;
+}
+
+.slick-prev {
+  /* background-color: red; */
+}
+
+.slick-prev:before {
+  font-size: 25px;
+}
+
+.slick-next {
+  right: -10px;
+}
+
+.slick-next:before {
+  font-size: 25px;
+}
+
+.slick-slider {
+  /* border: 1px solid red; */
+  margin-top: 50px;
+  margin-bottom: 50px;
+  margin-left: 50px;
+  margin-right: 50px;
+  padding-left: 18px;
+}
