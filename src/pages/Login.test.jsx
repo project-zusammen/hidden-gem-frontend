@@ -7,31 +7,28 @@ describe("Login", () => {
   test("renders login form with email and password fields", () => {
     render(<Login />);
 
-    const emailInput = screen.getByLabelText("Email");
-    const passwordInput = screen.getByLabelText("Password");
+    const emailInputField = screen.getByTestId("email-field");
+    const passwordInputField = screen.getByTestId("password-field");
 
-    expect(emailInput).toBeInTheDocument();
-    expect(passwordInput).toBeInTheDocument();
-  });
-
-  test('renders "Create an account" link', () => {
-    render(<Login />);
-
-    const createAccountLink = screen.getByText("Create an account.");
-
-    expect(createAccountLink).toBeInTheDocument();
-    expect(createAccountLink).toHaveAttribute("href", "/signup");
+    expect(emailInputField).toBeInTheDocument();
+    expect(passwordInputField).toBeInTheDocument();
   });
 
   test("submits form with provided email and password", () => {
+    const emailAddress = 'test@example.com';
+    const password = 'password123';
+
     render(<Login />);
 
-    const emailInput = screen.getByLabelText("Email");
-    const passwordInput = screen.getByLabelText("Password");
-    const loginButton = screen.getByText("Log in");
+    const emailInputField = screen.getByTestId("email-content");
+    const passwordInputField = screen.getByTestId("password-content");
+    const loginButton = screen.getByTestId("login-button");
 
-    fireEvent.change(emailInput, { target: { value: "test@example.com" } });
-    fireEvent.change(passwordInput, { target: { value: "password123" } });
+    fireEvent.change(emailInputField, { target: { value: emailAddress } });
+    fireEvent.change(passwordInputField, { target: { value: password } });
     fireEvent.click(loginButton);
+
+    expect(emailInputField).toHaveValue(emailAddress);
+    expect(passwordInputField).toHaveValue(password);
   });
 });

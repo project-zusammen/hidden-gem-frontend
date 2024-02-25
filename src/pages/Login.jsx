@@ -1,18 +1,10 @@
 import { Container, Box, Typography, Stack, Paper, TextField, Button } from "@mui/material";
-import React, { useRef } from "react";
+import React from "react";
 // import { Link } from "react-router-dom";
 
 const Login = () => {
-  const emailInputRef = useRef(null);
-  const passwordInputRef = useRef(null);
-
-  const handleEmailChange = (event) => {
-    console.log("Email changed:", event.target.value);
-  };
-
-  const handlePasswordChange = (event) => {
-    console.log("Password changed:", event.target.value);
-  };
+  const [email, setEmail] = React.useState("");
+  const [password, setPassword] = React.useState("");
 
   return (
     <Container maxWidth={false} style={{ paddingLeft: 0, paddingRight: 0 }}>
@@ -27,18 +19,18 @@ const Login = () => {
           <Box component="form" sx={{ display: "flex", flexDirection: "column", gap: 2, marginY: 5 }}>
             <Typography variant="body2">Email</Typography>
             <TextField
-              inputRef={emailInputRef}
-              data-testid="email"
               variant="outlined"
-              onChange={handleEmailChange}
+              onChange={event => setEmail(event.target.value)}
+              data-testid="email-field"
+              inputProps={{ "data-testid": "email-content" }}
             />
             <Typography variant="body2">Password</Typography>
             <TextField
-              inputRef={passwordInputRef}
-              data-testid="password"
               type="password"
               variant="outlined"
-              onChange={handlePasswordChange}
+              data-testid="password-field"
+              inputProps={{ "data-testid": "password-content" }}
+              onChange={event => setPassword(event.target.value)}
             />
             <Button data-testid="login-button" variant="contained" type="submit" sx={{ backgroundColor: "#0bda73", ":hover": { backgroundColor: "#0ff582" }, boxShadow: "none" }}>
               Log in
