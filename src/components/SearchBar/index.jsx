@@ -10,7 +10,7 @@ const SearchBarWithTabs = () => {
   };
 
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', marginTop: '50px', marginBottom: '50px' }}>
+    <Box data-testid="search-bar" sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', marginTop: '50px', marginBottom: '50px' }}>
       <Tabs value={currentTab} onChange={handleChange} aria-label="Search tabs">
         <Tab label="Food" />
         <Tab label="Hotel" />
