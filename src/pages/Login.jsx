@@ -1,8 +1,19 @@
 import { Container, Box, Typography, Stack, Paper, TextField, Button } from "@mui/material";
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useRef } from "react";
+// import { Link } from "react-router-dom";
 
 const Login = () => {
+  const emailInputRef = useRef(null);
+  const passwordInputRef = useRef(null);
+
+  const handleEmailChange = (event) => {
+    console.log("Email changed:", event.target.value);
+  };
+
+  const handlePasswordChange = (event) => {
+    console.log("Password changed:", event.target.value);
+  };
+
   return (
     <Container maxWidth={false} style={{ paddingLeft: 0, paddingRight: 0 }}>
       <Paper elevation={2} sx={{ height: "100vh", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", marginTop: "50px", marginBottom: "50px", maxWidth: "500px", marginX: "auto" }}>
@@ -15,19 +26,30 @@ const Login = () => {
           </Box>
           <Box component="form" sx={{ display: "flex", flexDirection: "column", gap: 2, marginY: 5 }}>
             <Typography variant="body2">Email</Typography>
-            <TextField id="outlined-basic" variant="outlined" />
+            <TextField
+              inputRef={emailInputRef}
+              data-testid="email"
+              variant="outlined"
+              onChange={handleEmailChange}
+            />
             <Typography variant="body2">Password</Typography>
-            <TextField id="outlined-basic" type="password" variant="outlined" />
-            <Button variant="contained" type="submit" sx={{ backgroundColor: "#0bda73", ":hover": { backgroundColor: "#0ff582" }, boxShadow: "none" }}>
+            <TextField
+              inputRef={passwordInputRef}
+              data-testid="password"
+              type="password"
+              variant="outlined"
+              onChange={handlePasswordChange}
+            />
+            <Button data-testid="login-button" variant="contained" type="submit" sx={{ backgroundColor: "#0bda73", ":hover": { backgroundColor: "#0ff582" }, boxShadow: "none" }}>
               Log in
             </Button>
           </Box>
           <Stack>
             <Typography variant="body1" sx={{ textAlign: "center" }}>
               Not registered yet?{" "}
-              <Link to={"/signup"} style={{ textDecoration: "none", color: "#0bda73" }}>
+              {/* <Link to={"/signup"} style={{ textDecoration: "none", color: "#0bda73" }}>
                 Create an account.
-              </Link>
+              </Link> */}
             </Typography>
           </Stack>
         </Stack>
