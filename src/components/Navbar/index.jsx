@@ -81,7 +81,7 @@ const Navbar = ({ region }) => {
                 }}
               >
                 <Typography variant="h3Bold" sx={{}}>
-                  <Link to="/login" style={{ textDecoration: "none", color: "inherit" }}>
+                  <Link to={"/login"} style={{ textDecoration: "none", color: "inherit" }}>
                     Log in
                   </Link>
                 </Typography>
