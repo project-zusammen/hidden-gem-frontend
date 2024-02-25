@@ -8,7 +8,7 @@ const Login = () => {
 
   return (
     <Container maxWidth={false} style={{ paddingLeft: 0, paddingRight: 0 }}>
-      <Paper elevation={2} sx={{ height: "100vh", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", marginTop: "50px", marginBottom: "50px", maxWidth: "500px", marginX: "auto" }}>
+      <Paper variant="outlined" sx={{ paddingY: "50px", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", marginTop: "50px", marginBottom: "50px", maxWidth: "500px", marginX: "auto" }}>
         <Stack spacing={4} sx={{ width: "80%" }}>
           <Box>
             <Typography variant="h1" gutterBottom textAlign={"start"}>
@@ -18,20 +18,9 @@ const Login = () => {
           </Box>
           <Box component="form" sx={{ display: "flex", flexDirection: "column", gap: 2, marginY: 5 }}>
             <Typography variant="body2">Email</Typography>
-            <TextField
-              variant="outlined"
-              onChange={event => setEmail(event.target.value)}
-              data-testid="email-field"
-              inputProps={{ "data-testid": "email-content" }}
-            />
+            <TextField variant="outlined" onChange={(event) => setEmail(event.target.value)} data-testid="email-field" inputProps={{ "data-testid": "email-content" }} />
             <Typography variant="body2">Password</Typography>
-            <TextField
-              type="password"
-              variant="outlined"
-              data-testid="password-field"
-              inputProps={{ "data-testid": "password-content" }}
-              onChange={event => setPassword(event.target.value)}
-            />
+            <TextField type="password" variant="outlined" data-testid="password-field" inputProps={{ "data-testid": "password-content" }} onChange={(event) => setPassword(event.target.value)} />
             <Button data-testid="login-button" variant="contained" type="submit" sx={{ backgroundColor: "#0bda73", ":hover": { backgroundColor: "#0ff582" }, boxShadow: "none" }}>
               Log in
             </Button>
