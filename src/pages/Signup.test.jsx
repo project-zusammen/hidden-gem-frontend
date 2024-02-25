@@ -3,13 +3,13 @@ import React from "react";
 import { BrowserRouter } from "react-router-dom";
 import { render, screen, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import SignUp from "./SignUp";
+import Signup from "./SignUp";
 
 describe("Signup", () => {
   test("renders signup form with email and password fields", () => {
     render(
       <BrowserRouter>
-        <SignUp />
+        <Signup />
       </BrowserRouter>
     );
 
@@ -29,7 +29,7 @@ describe("Signup", () => {
 
     render(
       <BrowserRouter>
-        <SignUp />
+        <Signup />
       </BrowserRouter>
     );
 
@@ -51,7 +51,7 @@ describe("Signup", () => {
   test("redirects to login page when 'Login' link is clicked", () => {
     render(
       <BrowserRouter>
-        <SignUp />
+        <Signup />
       </BrowserRouter>
     );
 

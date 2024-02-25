@@ -2,7 +2,7 @@ import { Container, Box, Typography, Stack, Paper, TextField, Button } from "@mu
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-const SignUp = () => {
+const Signup = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -41,4 +41,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default Signup;
