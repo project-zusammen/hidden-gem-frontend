@@ -45,7 +45,7 @@ const Body = () => {
     //   {/* <Grid item xs={4} md={4} lg={2}></Grid> */}
     // </Grid>
     <>
-      <h1 className="body-post">New Posts</h1>
+      <h1 className="body-post">New Reviews</h1>
       <div className="slider-container">
         <Slider {...settings}>
           <div>
