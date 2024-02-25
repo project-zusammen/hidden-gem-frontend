@@ -1,6 +1,6 @@
 import { Container, Box, Typography, Stack, Paper, TextField, Button } from "@mui/material";
 import React from "react";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const [email, setEmail] = React.useState("");
@@ -39,9 +39,9 @@ const Login = () => {
           <Stack>
             <Typography variant="body1" sx={{ textAlign: "center" }}>
               Not registered yet?{" "}
-              {/* <Link to={"/signup"} style={{ textDecoration: "none", color: "#0bda73" }}>
+              <Link data-testid="create-account-link" to={"/signup"} style={{ textDecoration: "none", color: "#0bda73" }}>
                 Create an account.
-              </Link> */}
+              </Link>
             </Typography>
           </Stack>
         </Stack>
