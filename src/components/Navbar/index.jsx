@@ -10,12 +10,22 @@ import {
   MenuList,
   MenuItem,
 } from "@mui/material";
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import logo from "/images/Logo.png";
 import MenuIcon from "@mui/icons-material/Menu";
 import ArrowDropDown from "@mui/icons-material/ArrowDropDown";
+import { getRegion } from "../../api/region";
 
 const Navbar = ({ region }) => {
+  const [regionData, setData] = useState(null);
+
+  useEffect(() => {
+    const regionFromApi = getRegion();
+    regionFromApi.then((data) => {
+      setData(data);
+    });
+  }, []);
+
   const [navStatus, setNavStatus] = useState(false);
   const iconButtonRef = useRef();
   const openNav = () => {
@@ -28,6 +38,7 @@ const Navbar = ({ region }) => {
   if (!region) {
     region = "Jakarta";
   }
+
   return (
     <AppBar
       position="static"
