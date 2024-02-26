@@ -1,37 +1,40 @@
 import React from 'react';
-import { BrowserRouter } from 'react-router-dom'; 
 import { render, screen } from '@testing-library/react';
 import Navbar from './index';
 
-describe('Navbar Component', () => {
-  test('renders Navbar component with default region', () => {
-    render( 
-      <BrowserRouter>
-        <Navbar />
-      </BrowserRouter>
-    );
+jest.mock('./index', () => ({
+  ...jest.requireActual('./index'),
+  getRegion: jest.fn(),
+}));
 
-    const logoElements = screen.queryAllByAltText('logo');
-    expect(logoElements.length).toBeGreaterThan(0);
-    expect(screen.getByText(/Home/i)).toBeInTheDocument();
-    expect(screen.getByText(/Log in/i)).toBeInTheDocument();
-    expect(screen.getByText(/Sign up/i)).toBeInTheDocument();
-    expect(screen.getByText(/Your region: Jakarta/i)).toBeInTheDocument();
-  });
-
-  test('renders Navbar component with custom region', () => {
-    const region = "Bandung"
-    render( 
-      <BrowserRouter>
-        <Navbar region={region}/>
-      </BrowserRouter>
-    );
-
-    const logoElements = screen.queryAllByAltText('logo');
-    expect(logoElements.length).toBeGreaterThan(0);
-    expect(screen.getByText(/Home/i)).toBeInTheDocument();
-    expect(screen.getByText(/Log in/i)).toBeInTheDocument();
-    expect(screen.getByText(/Sign up/i)).toBeInTheDocument();
-    expect(screen.getByText(`Your region: ${region}`)).toBeInTheDocument();
-  });
+test('renders navbar component', () => {
+  render(<Navbar />);
+  expect(Navbar).toHaveBeenCalledTimes(1);
 });
+
+test('renders navbar with correct logo', () => {
+  render(<Navbar />);
+  const logoElement = screen.getByAltText('Logo');
+  expect(logoElement).toBeInTheDocument();
+  // Add additional assertions for the logo if needed
+});
+
+test('renders navbar with correct navigation links', () => {
+  render(<Navbar />);
+  const homeLink = screen.getByText('Home');
+  const aboutLink = screen.getByText('About');
+  const contactLink = screen.getByText('Contact');
+  expect(homeLink).toBeInTheDocument();
+  expect(aboutLink).toBeInTheDocument();
+  expect(contactLink).toBeInTheDocument();
+  // Add additional assertions for the navigation links if needed
+});
+
+test('renders navbar with active link', () => {
+  render(<Navbar />);
+  const activeLink = screen.getByText('Home');
+  expect(activeLink).toHaveClass('active');
+  // Add additional assertions for the active link if needed
+});
+
+
