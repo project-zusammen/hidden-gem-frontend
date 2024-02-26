@@ -53,7 +53,11 @@ const SearchBarWithTabs = () => {
               <InputAdornment position="end">
                 <Button
                   variant="contained"
-                  sx={{ borderRadius: 20, marginRight: "-5px" }}
+                  sx={{
+                    borderRadius: 20,
+                    position: "relative",
+                    right: "-10px",
+                  }}
                 >
                   Search
                 </Button>
