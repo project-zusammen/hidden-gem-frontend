@@ -1,5 +1,4 @@
 import React from "react";
-// import { Box, Container, Grid, Typography } from "@mui/material";
 import Card from "../Card";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
