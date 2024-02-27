@@ -13,8 +13,11 @@
   "dependencies": {
     "@emotion/react": "^11.11.3",
     "@emotion/styled": "^11.11.0",
+    "@esbuild/darwin-x64": "^0.20.1",
     "@mui/icons-material": "^5.15.0",
     "@mui/material": "^5.15.2",
+    "firebase": "^10.8.0",
+    "firebase-functions": "^4.7.0",
     "framer-motion": "^10.16.16",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",

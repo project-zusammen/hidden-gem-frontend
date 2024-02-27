@@ -1,6 +1,7 @@
 import React from 'react';
 import { Grid, Typography } from '@mui/material';
 import Card from '../Card';
+import ImageUpload from '../ImageUpload';
 
 const Body = () => {
   return (
@@ -11,6 +12,7 @@ const Body = () => {
       <Grid item xs={4} md={4} lg={8}>
       </Grid>
       <Grid item xs={4} md={4} lg={2}>
+        <ImageUpload />
       </Grid>
       <Grid item xs={4} md={4} lg={2}>
       </Grid>
