@@ -9,7 +9,7 @@ function AddReviewForm() {
   const [category, setCategory] = useState('');
   const [region, setRegion] = useState('');
   const [tag, setTag] = useState('');
-  const [text, setText] = useState('');
+  const [content, setContent] = useState('');
   const [previewImage, setPreviewImage] = useState(null);
   const [uploadProgress, setUploadProgress] = useState(0);
 
@@ -87,8 +87,8 @@ function AddReviewForm() {
         <input type="text" id="tag" value={tag} onChange={(event) => setTag(event.target.value)} />
       </div>
       <div className={styles.field}>
-        <label htmlFor="text">Text:</label>
-        <textarea id="text" value={text} onChange={(event) => setText(event.target.value)} />
+        <label htmlFor="content">Content:</label>
+        <textarea id="content" value={content} onChange={(event) => setContent(event.target.value)} />
       </div>
       <label htmlFor="image-upload">Image:</label>
       <input
