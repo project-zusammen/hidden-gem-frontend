@@ -51,6 +51,13 @@ function AddReviewForm() {
     }
   };
 
+  const handleRemoveImage = () => {
+    setPreviewImage(null);
+    const fileInput = document.getElementById('image-upload');
+    if (fileInput) {
+        fileInput.value = '';
+    }
+  };
 
   return (
     <form onSubmit={handleSubmit} className={styles.form}>
@@ -99,6 +106,9 @@ function AddReviewForm() {
       />
       {previewImage && !uploadProgress && (
         <div className={styles.previewImage}>
+          <button className="removeButton" onClick={handleRemoveImage}>
+            x
+          </button>
           <img src={previewImage} alt="Uploaded preview" />
         </div>
       )}
