@@ -24,15 +24,17 @@ const Navbar = ({ region }) => {
       <Toolbar sx={{ display: { xs: "none", md: "flex" }, height: "80px" }}>
         <Grid container alignItems="center" justifyContent="space-between">
           <Grid item xs={4}>
-            <Box
-              component="img"
-              alt="logo"
-              src={logo}
-              sx={{
-                height: 28,
-                flexGrow: 1,
-              }}
-            />
+            <Link to={"/"}>
+              <Box
+                component="img"
+                alt="logo"
+                src={logo}
+                sx={{
+                  height: 28,
+                  flexGrow: 1,
+                }}
+              />
+            </Link>
           </Grid>
 
           <Grid item sx={{ flexGrow: 1 }} xs={4}>

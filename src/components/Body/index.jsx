@@ -1,7 +1,7 @@
 import React from 'react';
-import { Grid, Typography } from '@mui/material';
+import { Grid, Typography, Button } from '@mui/material';
+import { Link } from 'react-router-dom';
 import Card from '../Card';
-import ImageUpload from '../ImageUpload';
 
 const Body = () => {
   return (
@@ -12,7 +12,9 @@ const Body = () => {
       <Grid item xs={4} md={4} lg={8}>
       </Grid>
       <Grid item xs={4} md={4} lg={2}>
-        <ImageUpload />
+        <Button component={ Link } to={"/write-review"}> 
+          <Typography variant="h3">Write a Review</Typography> 
+        </Button>
       </Grid>
       <Grid item xs={4} md={4} lg={2}>
       </Grid>
