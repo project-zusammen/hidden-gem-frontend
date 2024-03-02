@@ -107,7 +107,9 @@ const Navbar = () => {
                 }}
               >
                 <Typography variant="h3Bold" sx={{}}>
-                  Sign up
+                  <Link to={"/signup"} style={{ textDecoration: "none", color: "inherit" }}>
+                    Sign up
+                  </Link>
                 </Typography>
               </Button>
             </Grid>
