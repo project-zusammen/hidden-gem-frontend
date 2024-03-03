@@ -24,7 +24,14 @@ const Login = () => {
           </Box>
           <Box component="form" sx={{ display: "flex", flexDirection: "column", gap: 2, marginY: 5 }}>
             <Typography variant="body2">Email</Typography>
-            <TextField placeholder="Email" variant="outlined" onChange={(event) => setEmail(event.target.value)} value={email} data-testid="email-field" inputProps={{ "data-testid": "email-content" }} />
+            <TextField 
+              placeholder="Email" 
+              variant="outlined" 
+              onChange={(event) => setEmail(event.target.value)} 
+              value={email} 
+              data-testid="email-field" 
+              inputProps={{ "data-testid": "email-content" }} 
+            />
             <Typography variant="body2">Password</Typography>
             <div style={{ position: 'relative' }}>
               <TextField
@@ -33,6 +40,7 @@ const Login = () => {
                 onChange={(e) => setPassword(e.target.value)}
                 value={password}
                 data-testid="password-field"
+                inputProps={{ "data-testid": "password-content" }} 
                 style={{ width: '100%' }}
               />
               <div

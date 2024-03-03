@@ -81,7 +81,7 @@ describe("Signup", () => {
     );
 
     const passwordInputField = screen.getByTestId("password-field").querySelector("input");
-    const showPasswordIcon = screen.getByTestId("show-password");
+    const showPasswordIcon = screen.getByTestId("hide-password"); // initially hidden
 
     fireEvent.click(showPasswordIcon);
 

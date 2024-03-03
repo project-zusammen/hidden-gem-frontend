@@ -13,6 +13,12 @@ const Signup = () => {
     setShowPassword((prevShowPassword) => !prevShowPassword);
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // handle form submission
+  }
+
+
   return (
     <Container maxWidth={false} style={{ paddingLeft: 0, paddingRight: 0 }}>
       <Paper variant="outlined" sx={{ paddingY: "50px", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", marginTop: "50px", marginBottom: "50px", maxWidth: "500px", marginX: "auto" }}>
@@ -51,6 +57,7 @@ const Signup = () => {
                 value={password}
                 data-testid="password-field"
                 style={{ width: '100%' }}
+                inputProps={{ "data-testid": "password-content" }} 
               />
               <div
                 style={{
@@ -66,7 +73,13 @@ const Signup = () => {
                 {showPassword ? <EyeOutlined /> : <EyeInvisibleOutlined />}
               </div>
             </div>
-            <Button variant="contained" type="submit" sx={{ backgroundColor: "#0bda73", ":hover": { backgroundColor: "#0ff582" }, boxShadow: "none" }} data-testid="signup-button">
+            <Button 
+              variant="contained" 
+              type="submit" 
+              sx={{ backgroundColor: "#0bda73", ":hover": { backgroundColor: "#0ff582" }, boxShadow: "none" }} 
+              data-testid="signup-button"
+              onClick={handleSubmit}
+            >
               Sign up
             </Button>
           </Box>
