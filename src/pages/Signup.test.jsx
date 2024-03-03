@@ -60,4 +60,31 @@ describe("Signup", () => {
 
     expect(loginLink).toHaveAttribute("href", "/login");
   });
+
+  test("should mask password input", () => {
+    render(
+      <BrowserRouter>
+        <Signup />
+      </BrowserRouter>
+    );
+
+    const passwordInputField = screen.getByTestId("password-field").querySelector("input");
+
+    expect(passwordInputField).toHaveAttribute("type", "password");
+  });
+
+  test("should show password when 'show-password' icon is clicked", () => {
+    render(
+      <BrowserRouter>
+        <Signup />
+      </BrowserRouter>
+    );
+
+    const passwordInputField = screen.getByTestId("password-field").querySelector("input");
+    const showPasswordIcon = screen.getByTestId("show-password");
+
+    fireEvent.click(showPasswordIcon);
+
+    expect(passwordInputField).toHaveAttribute("type", "text");
+  });
 });
