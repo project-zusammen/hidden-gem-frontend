@@ -1,72 +1,52 @@
-import React from "react";
-import Card from "../Card";
 import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import Cards from "../Card";
+import { useEffect, useState } from "react";
 
-const Body = () => {
+const review = "https://hiddengem.pythonanywhere.com/api/review";
+const users = "https://jsonplaceholder.typicode.com/users";
+
+export default function index() {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(review);
+        const data = await response.json();
+        setProducts(data.data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   const settings = {
-    dots: false,
+    dots: true,
     infinite: true,
     speed: 500,
     slidesToShow: 3,
     slidesToScroll: 3,
   };
   return (
-    // <Grid container spacing={3} marginTop={5} marginBottom={13}>
-    //   {/* Main Content Sections */}
-    //   <Grid item xs={4} md={4} lg={2}></Grid>
-    //   <Grid item xs={4} md={4} lg={8}></Grid>
-    //   <Grid item xs={4} md={4} lg={2}></Grid>
-    //   <Grid item xs={4} md={4} lg={2}></Grid>
-    //   <Grid item xs={4} md={4} lg={8}>
-    //     <Typography variant="h1" gutterBottom textAlign={"center"}>
-    //       New Posts
-    //     </Typography>
-    //   </Grid>
-    //   <Grid item xs={4} md={4} lg={2}></Grid>
-    //   <Grid item xs={4} md={4} lg={2}></Grid>
-    //   <Grid item xs={4} md={4} lg={8}>
-    //     <Grid container spacing={2} xs={12}>
-    //       <Grid item xs={3}>
-    //         <Card>{/* Card content here */}</Card>
-    //       </Grid>
-    //       <Grid item xs={3}>
-    //         <Card>{/* Card content here */}</Card>
-    //       </Grid>
-    //       <Grid item xs={3}>
-    //         <Card>{/* Card content here */}</Card>
-    //       </Grid>
-    //     </Grid>
-    //   </Grid>
-    //   <Grid item xs={4} md={4} lg={2}></Grid>
-    //   <Grid item xs={4} md={4} lg={2}></Grid>
-    //   <Grid item xs={4} md={4} lg={8}></Grid>
-    //   {/* <Grid item xs={4} md={4} lg={2}></Grid> */}
-    // </Grid>
-    <>
-      <h1 className="body-post">New Reviews</h1>
-      <div className="slider-container">
-        <Slider {...settings}>
-          <div>
-            <Card />
-          </div>
-          <div>
-            <Card />
-          </div>
-          <div>
-            <Card />
-          </div>
-          <div>
-            <Card />
-          </div>
-          <div>
-            <Card />
-          </div>
-        </Slider>
-      </div>
-    </>
+    <div className="slider-container">
+      <Slider {...settings}>
+        <div>
+          {products.map((product) => {
+            return (
+              <>
+                <Cards
+                  title={product.title}
+                  content={product.content}
+                  vote={product.upvotes}
+                />
+              </>
+            );
+          })}
+        </div>
+      </Slider>
+      ;
+    </div>
   );
-};
-
-export default Body;
+}
