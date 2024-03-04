@@ -6,10 +6,11 @@ import CardActions from "@mui/material/CardActions";
 import Typography from "@mui/material/Typography";
 import { Button } from "@mui/material";
 import image from "../../images/raja-ampat.jpeg";
+import PropTypes from "prop-types";
 
-export default function RecipeReviewCard({ title, content, vote }) {
+export default function ReviewCard({ title, content, vote }) {
   return (
-    <Card sx={{ width: 270, height: 380 }}>
+    <Card sx={{ width: 250, height: 380 }}>
       <CardMedia sx={{ height: 140 }} image={image} title="green iguana" />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
@@ -41,3 +42,15 @@ export default function RecipeReviewCard({ title, content, vote }) {
     </Card>
   );
 }
+
+ReviewCard.defaultProps = {
+  title: "Raja Ampat",
+  content: "Raja Ampat is a paradise for diving enthusiasts",
+  vote: 100,
+};
+
+ReviewCard.propTypes = {
+  title: PropTypes.string,
+  content: PropTypes.string,
+  vote: PropTypes.number,
+};
