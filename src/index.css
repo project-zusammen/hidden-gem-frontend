@@ -46,10 +46,31 @@ body {
 }
 
 .slick-slider {
-  /* border: 1px solid red; */
   margin-top: 50px;
   margin-bottom: 50px;
   margin-left: 50px;
   margin-right: 50px;
   padding-left: 18px;
+}
+
+@media (max-width: 768px) {
+  .slider-container {
+    margin: 35px auto;
+    width: 375px;
+    height: 500px;
+    border: 1px solid #50c878;
+    background-color: #50c878;
+    border-radius: 15px;
+  }
+}
+
+@media (max-width: 390px) {
+  .slider-container {
+    margin: 35px auto;
+    width: 375px;
+    height: 500px;
+    border: 1px solid #50c878;
+    background-color: #50c878;
+    border-radius: 15px;
+  }
 }
