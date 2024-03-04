@@ -22,3 +22,7 @@
 .arrow-next {
   right: 10px;
 }
+
+.simple-slider:not(.slick-initialized) .simple-slide-container:after {
+    display: none;
+  }
