@@ -21,7 +21,7 @@ import image from "../../images/raja-ampat.jpeg";
 
 export default function RecipeReviewCard() {
   return (
-    <Card sx={{ width: 270, height: 380 }}>
+    <Card sx={{ width: 280, height: 380 }}>
       <CardMedia sx={{ height: 140 }} image={image} title="green iguana" />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
@@ -44,10 +44,19 @@ export default function RecipeReviewCard() {
           sx={{
             color: "primary.light",
           }}
+          className="vote"
         >
           10 Upvotes
         </Button>
-        <Button size="small" color="secondary" variant="contained">
+        <Button
+          size="small"
+          color="secondary"
+          variant="contained"
+          className="view"
+          sx={{
+            marginRight: "25px",
+          }}
+        >
           View
         </Button>
       </CardActions>
