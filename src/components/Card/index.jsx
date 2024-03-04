@@ -7,29 +7,16 @@ import Typography from "@mui/material/Typography";
 import { Button } from "@mui/material";
 import image from "../../images/raja-ampat.jpeg";
 
-// const ExpandMore = styled((props) => {
-//   // eslint-disable-next-line no-unused-vars
-//   const { expand, other } = props;
-//   return <IconButton {...other} />;
-// })(({ theme, expand }) => ({
-//   transform: !expand ? "rotate(0deg)" : "rotate(180deg)",
-//   marginLeft: "auto",
-//   transition: theme.transitions.create("transform", {
-//     duration: theme.transitions.duration.shortest,
-//   }),
-// }));
-
-export default function RecipeReviewCard() {
+export default function RecipeReviewCard({ title, content, vote }) {
   return (
     <Card sx={{ width: 270, height: 380 }}>
       <CardMedia sx={{ height: 140 }} image={image} title="green iguana" />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-          Nukad Tampaskiring
+          {title}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          Lizards are a widespread group of squamate reptiles, with over 6,000
-          species, ranging across all continents except Antarctica
+          {content}
         </Typography>
       </CardContent>
       <CardActions
@@ -45,7 +32,7 @@ export default function RecipeReviewCard() {
             color: "primary.light",
           }}
         >
-          10 Upvotes
+          {vote} Upvotes
         </Button>
         <Button size="small" color="secondary" variant="contained">
           View
