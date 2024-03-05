@@ -1,17 +1,15 @@
 import Slider from "react-slick";
-import React, { useRef } from "react";
+import React, { useEffect, useState } from "react";
 import Cards from "../Card";
-import { useEffect, useState } from "react";
-import { KeyboardArrowLeft, KeyboardArrowRight } from "@mui/icons-material";
-import { IconButton } from "@mui/material";
-import PropTypes from "prop-types";
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 import "./styles.css";
 
 const review = "https://hiddengem.pythonanywhere.com/api/review";
 const users = "https://jsonplaceholder.typicode.com/users";
 
 export default function Body() {
-  const reviewsPerSlide = 4;
+  const reviewsPerSlide = 3;
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
