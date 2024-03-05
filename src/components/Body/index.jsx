@@ -13,7 +13,7 @@ const Body = () => {
     slidesToScroll: 3,
   };
   return (
-    <Grid container spacing={3} marginTop={5} marginBottom={13}>
+    <Grid data-testid="body" container spacing={3} marginTop={5} marginBottom={13}>
       {/* Main Content Sections */}
       <Grid item xs={4} md={4} lg={2}></Grid>
       <Grid item xs={4} md={4} lg={8}></Grid>

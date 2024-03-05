@@ -24,21 +24,26 @@ export default function ReviewCard() {
     <Card sx={{ width: 270, height: 380 }}>
       <CardMedia sx={{ height: 140 }} image={image} title="green iguana" />
       <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
+        <Typography
+          data-testid="card-title"
+          gutterBottom
+          variant="h5"
+          component="div"
+        >
           Lizard
         </Typography>
-        <Typography
-          data-testid="card-text"
-          variant="body2"
-          color="text.secondary"
-        >
+        <Typography variant="body2" color="text.secondary">
           Lizards are a widespread group of squamate reptiles, with over 6,000
           species, ranging across all continents except Antarctica
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">10 Upvotes</Button>
-        <Button size="small">Learn More</Button>
+        <Button data-testid="upvotes" size="small">
+          10 Upvotes
+        </Button>
+        <Button data-testid="detail" size="small">
+          Learn More
+        </Button>
       </CardActions>
     </Card>
   );
