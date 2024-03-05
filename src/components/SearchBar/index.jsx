@@ -28,13 +28,7 @@ const SearchBarWithTabs = () => {
         marginBottom: "50px",
       }}
     >
-      <Tabs
-        value={currentTab}
-        onChange={handleChange}
-        aria-label="Search tabs"
-        // textColor="neutral"
-        // indicatorColor="neutral.dark"
-      >
+      <Tabs value={currentTab} onChange={handleChange} aria-label="Search tabs">
         <Tab label="Food" />
         <Tab label="Hotel" />
         <Tab label="Cafe" />
