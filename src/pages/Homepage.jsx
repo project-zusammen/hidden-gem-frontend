@@ -6,12 +6,13 @@ import Body from "../components/Body";
 const Homepage = () => {
   return (
     <Container maxWidth={false} style={{ paddingLeft: 0, paddingRight: 0 }}>
-      <Grid container justifyContent="center">
-        <Grid item xs={12}>
+      <Grid container justifyContent="center" spacing={2}>
+        <Grid item xs={12} md={10} lg={8}>
           <SearchBar />
           <Body />
         </Grid>
       </Grid>
+      <Grid item xs={12} style={{ height: "200px" }} />
     </Container>
   );
 };

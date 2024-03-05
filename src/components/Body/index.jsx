@@ -1,19 +1,32 @@
 import Slider from "react-slick";
+import React, { useEffect, useState } from "react";
 import Cards from "../Card";
-import { useEffect, useState } from "react";
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import "./styles.css";
 
 const review = "https://hiddengem.pythonanywhere.com/api/review";
 const users = "https://jsonplaceholder.typicode.com/users";
 
-export default function index() {
-  const [products, setProducts] = useState([]);
+export default function Body() {
+  const reviewsPerSlide = 3;
+  const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await fetch(review);
         const data = await response.json();
-        setProducts(data.data);
+        const reviewData = data.data;
+        const newData = reviewData.map((review) => {
+          return {
+            title: review.title + " (new)",
+            content: review.content + " (new)",
+            upvotes: review.upvotes + 1,
+            public_id: review.public_id + " (new)",
+          };
+        });
+        setReviews([ ...reviewData, ...newData, ...reviewData, ...newData]);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -23,30 +36,29 @@ export default function index() {
   }, []);
 
   const settings = {
-    dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 3,
+    slidesToShow: reviewsPerSlide,
+    slidesToScroll: 1,
+    initialSlide: 0,
   };
+  
   return (
-    <div className="slider-container">
-      <Slider {...settings}>
-        <div>
-          {products.map((product) => {
-            return (
-              <>
+    <div className="slider-container" data-testid="review-slider">
+      <div className="horizontal-cards-container">
+        <Slider {...settings} >
+            {reviews.map((review) => {
+              return (
                 <Cards
-                  title={product.title}
-                  content={product.content}
-                  vote={product.upvotes}
+                  key = {review.public_id}
+                  title={review.title}
+                  content={review.content}
+                  vote={review.upvotes}
                 />
-              </>
-            );
-          })}
-        </div>
-      </Slider>
-      ;
+              );
+            })}
+        </Slider>
+      </div>
     </div>
   );
 }
