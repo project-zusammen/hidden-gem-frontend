@@ -5,6 +5,7 @@ import { ThemeProvider } from "@mui/material";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import theme from "./styles/Theme";
+import "./index.css";
 
 function App() {
   return (
