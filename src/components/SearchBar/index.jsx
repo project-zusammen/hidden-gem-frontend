@@ -4,11 +4,9 @@ import {
   Tabs,
   TextField,
   Box,
-  IconButton,
   Button,
   InputAdornment,
 } from "@mui/material";
-import SearchIcon from "@mui/icons-material/Search";
 
 const SearchBarWithTabs = () => {
   const [currentTab, setCurrentTab] = useState(0);
