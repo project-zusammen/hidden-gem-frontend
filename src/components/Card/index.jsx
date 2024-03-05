@@ -19,47 +19,53 @@ import image from "../../images/raja-ampat.jpeg";
 //   }),
 // }));
 
-export default function RecipeReviewCard() {
+export default function ReviewCard() {
   return (
-    <Card sx={{ width: 280, height: 380 }}>
-      <CardMedia sx={{ height: 140 }} image={image} title="green iguana" />
-      <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
-          Nukad Tampaskiring
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-          Lizards are a widespread group of squamate reptiles, with over 6,000
-          species, ranging across all continents except Antarctica
-        </Typography>
-      </CardContent>
-      <CardActions
-        sx={{
-          display: "flex",
-          justifyContent: "space-between",
-          marginTop: "30px",
-        }}
-      >
-        <Button
-          size="small"
+    <>
+      <Card sx={{ width: 280, height: 380 }}>
+        <CardMedia sx={{ height: 140 }} image={image} title="green iguana" />
+        <CardContent>
+          <Typography gutterBottom variant="h5" component="div">
+            Lizard
+          </Typography>
+          <Typography
+            data-testid="card-text"
+            variant="body2"
+            color="text.secondary"
+          >
+            Lizards are a widespread group of squamate reptiles, with over 6,000
+            species, ranging across all continents except Antarctica
+          </Typography>
+        </CardContent>
+        <CardActions
           sx={{
-            color: "primary.light",
-          }}
-          className="vote"
-        >
-          10 Upvotes
-        </Button>
-        <Button
-          size="small"
-          color="secondary"
-          variant="contained"
-          className="view"
-          sx={{
-            marginRight: "25px",
+            display: "flex",
+            justifyContent: "space-between",
+            marginTop: "30px",
           }}
         >
-          View
-        </Button>
-      </CardActions>
-    </Card>
+          <Button
+            size="small"
+            sx={{
+              color: "primary.light",
+            }}
+            className="vote"
+          >
+            10 Upvotes
+          </Button>
+          <Button
+            size="small"
+            color="secondary"
+            variant="contained"
+            className="view"
+            sx={{
+              marginRight: "25px",
+            }}
+          >
+            View
+          </Button>{" "}
+        </CardActions>
+      </Card>
+    </>
   );
 }
