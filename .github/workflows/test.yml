@@ -2,6 +2,7 @@ name: Build and Test
 
 on:
   pull_request:
+    branches: [main]
 
 jobs:
   build_and_test:
@@ -32,4 +33,3 @@ jobs:
         with:
           name: test-results
           path: ./test-results/**/*.xml
-
