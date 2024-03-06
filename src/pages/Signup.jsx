@@ -2,14 +2,21 @@ import { Container, Box, Typography, Stack, Paper, TextField, Button } from "@mu
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
+  const navigate = useNavigate();
+
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isDataExist, setIsDataExist] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSignUp = async (e) => {
     e.preventDefault();
+
+    setIsLoading(true);
 
     try {
       const response = await axios.post(
@@ -26,12 +33,20 @@ const Signup = () => {
         }
       );
 
-      console.log("Post created:", response.data, "try");
       setUsername("");
       setEmail("");
       setPassword("");
+      if (response.data.status === "success") {
+        navigate("/");
+      }
     } catch (error) {
-      console.log(error.response.data, "catch");
+      if (error.response.data.status === "error") {
+        setIsDataExist(true);
+      } else {
+        console.log(error);
+      }
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -53,8 +68,13 @@ const Signup = () => {
             <Typography variant="body2">Password</Typography>
             <TextField type="password" variant="outlined" onChange={(e) => setPassword(e.target.value)} value={password} data-testid="password-field" inputProps={{ "data-testid": "password-content" }} />
             <Button variant="contained" type="submit" sx={{ backgroundColor: "#0bda73", ":hover": { backgroundColor: "#0ff582" }, boxShadow: "none" }} data-testid="signup-button">
-              Sign up
+              {!isLoading ? "Sign up" : "Loading ..."}
             </Button>
+            {isDataExist && (
+              <Typography variant="body2" sx={{ color: "red" }}>
+                Register user failed. Your email is already registered!
+              </Typography>
+            )}
           </Box>
           <Stack>
             <Typography variant="body1" sx={{ textAlign: "center" }}>
