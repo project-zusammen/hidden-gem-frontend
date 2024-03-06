@@ -1,11 +1,39 @@
 import { Container, Box, Typography, Stack, Paper, TextField, Button } from "@mui/material";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const Signup = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const handleSignUp = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await axios.post(
+        `${import.meta.env.VITE_API_BASE_URL}/user/signup`,
+        {
+          username,
+          email,
+          password,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      console.log("Post created:", response.data, "try");
+      setUsername("");
+      setEmail("");
+      setPassword("");
+    } catch (error) {
+      console.log(error.response.data, "catch");
+    }
+  };
 
   return (
     <Container maxWidth={false} style={{ paddingLeft: 0, paddingRight: 0 }}>
@@ -17,7 +45,7 @@ const Signup = () => {
             </Typography>
             <Typography variant="h3">Start your journey. Sign up today!</Typography>
           </Box>
-          <Box component="form" sx={{ display: "flex", flexDirection: "column", gap: 2, marginY: 5 }}>
+          <Box onSubmit={handleSignUp} component="form" sx={{ display: "flex", flexDirection: "column", gap: 2, marginY: 5 }}>
             <Typography variant="body2">Username</Typography>
             <TextField variant="outlined" onChange={(e) => setUsername(e.target.value)} value={username} data-testid="username-field" inputProps={{ "data-testid": "username-content" }} />
             <Typography variant="body2">Email</Typography>
