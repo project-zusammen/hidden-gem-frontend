@@ -12,9 +12,23 @@ const Signup = () => {
   const [password, setPassword] = useState("");
   const [isDataExist, setIsDataExist] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [inputMinLength, setInputMinLength] = useState(false);
+  const [isEmail, setIsEmail] = useState(false);
 
   const handleSignUp = async (e) => {
     e.preventDefault();
+
+    if (username.length < 4) {
+      setInputMinLength(true);
+    }
+
+    if (email.length === 0) {
+      setIsEmail(true);
+    }
+
+    if (password.length < 4) {
+      setInputMinLength(true);
+    }
 
     setIsLoading(true);
 
@@ -22,9 +36,9 @@ const Signup = () => {
       const response = await axios.post(
         `${import.meta.env.VITE_API_BASE_URL}/user/signup`,
         {
-          username,
-          email,
-          password,
+          username: username.trim(),
+          email: email.trim(),
+          password: password.trim(),
         },
         {
           headers: {
@@ -36,6 +50,7 @@ const Signup = () => {
       setUsername("");
       setEmail("");
       setPassword("");
+
       if (response.data.status === "success") {
         navigate("/");
       }
@@ -63,10 +78,25 @@ const Signup = () => {
           <Box onSubmit={handleSignUp} component="form" sx={{ display: "flex", flexDirection: "column", gap: 2, marginY: 5 }}>
             <Typography variant="body2">Username</Typography>
             <TextField variant="outlined" onChange={(e) => setUsername(e.target.value)} value={username} data-testid="username-field" inputProps={{ "data-testid": "username-content" }} />
+            {inputMinLength && (
+              <Typography variant="body2" sx={{ color: "red" }}>
+                Username should be at least 5 characters.
+              </Typography>
+            )}
             <Typography variant="body2">Email</Typography>
             <TextField variant="outlined" onChange={(e) => setEmail(e.target.value)} value={email} data-testid="email-field" inputProps={{ "data-testid": "email-content" }} />
+            {isEmail && (
+              <Typography variant="body2" sx={{ color: "red" }}>
+                Email can't be empty.
+              </Typography>
+            )}
             <Typography variant="body2">Password</Typography>
             <TextField type="password" variant="outlined" onChange={(e) => setPassword(e.target.value)} value={password} data-testid="password-field" inputProps={{ "data-testid": "password-content" }} />
+            {inputMinLength && (
+              <Typography variant="body2" sx={{ color: "red" }}>
+                Password should be at least 5 characters.
+              </Typography>
+            )}
             <Button variant="contained" type="submit" sx={{ backgroundColor: "#0bda73", ":hover": { backgroundColor: "#0ff582" }, boxShadow: "none" }} data-testid="signup-button">
               {!isLoading ? "Sign up" : "Loading ..."}
             </Button>
