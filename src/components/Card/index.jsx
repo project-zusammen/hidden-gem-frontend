@@ -14,7 +14,7 @@ export default function ReviewCard({ title, content, vote }) {
       <CardMedia sx={{ height: 140 }} image={image} title="green iguana" />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-          {title}
+          {title} New reviews
         </Typography>
         <Typography variant="body2" color="text.secondary">
           {content}
