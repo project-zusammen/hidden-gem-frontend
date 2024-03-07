@@ -8,6 +8,10 @@ import { getRegion } from "../../api/region";
 const Navbar = () => {
   const [regions, setRegions] = useState([]);
   const [selectedRegion, setSelectedRegion] = useState("");
+  const [navStatus, setNavStatus] = useState(false);
+  const iconButtonRef = useRef();
+
+  const anchorEl = React.useRef();
 
   const fetchRegion = async () => {
     const data = await getRegion();
@@ -18,15 +22,13 @@ const Navbar = () => {
     fetchRegion();
   }, []);
 
-  const [navStatus, setNavStatus] = useState(false);
-  const iconButtonRef = useRef();
   const openNav = () => {
     setNavStatus(true);
   };
+
   const closeNav = (e) => {
     setNavStatus(false);
   };
-  const anchorEl = React.useRef();
 
   const handleRegionChange = (e) => {
     setSelectedRegion(e.target.value);
