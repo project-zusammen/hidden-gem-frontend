@@ -1,8 +1,9 @@
+import axios from "axios";
+
 export const getRegion = async () => {
   try {
-    const response = await fetch(`${API_BASE_URL}/region`);
-    const data = await response.json();
-    return data.data;
+    const response = await axios.get(`${API_BASE_URL}/region`);
+    return response.data;
   } catch (error) {
     console.error("Error fetching data:", error);
     throw error;
