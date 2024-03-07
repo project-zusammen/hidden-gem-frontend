@@ -24,8 +24,9 @@ export default function ReviewCard() {
     <Card sx={{ maxWidth: 345 }}>
       <CardMedia
         sx={{ height: 140 }}
+        component="img"
         image={image}
-        title="green iguana"
+        title="card image"
       />
       <CardContent>
         <Typography data-testid="card-title" gutterBottom variant="h5" component="div">

@@ -56,5 +56,4 @@ module.exports = {
     '\\.(jpg|jpeg|png|gif|svg)$': '<rootDir>/mocks/imageMock.js',
     "\\.(css|less)$": "<rootDir>/mocks/imageMock.js"
   },
-  testEnvironment: "jest-environment-jsdom-fourteen",
 };
