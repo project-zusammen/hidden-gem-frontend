@@ -12,22 +12,26 @@ const Signup = () => {
   const [password, setPassword] = useState("");
   const [isDataExist, setIsDataExist] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [inputMinLength, setInputMinLength] = useState(false);
-  const [isEmail, setIsEmail] = useState(false);
+  const [usernameLength, setUsernameLength] = useState(false);
+  const [isEmailEmpty, setIsEmailEmpty] = useState(false);
+  const [passwordLength, setPasswordLength] = useState(false);
 
   const handleSignUp = async (e) => {
     e.preventDefault();
 
     if (username.length < 4) {
-      setInputMinLength(true);
+      setUsernameLength(true);
+      return;
     }
 
     if (email.length === 0) {
-      setIsEmail(true);
+      setIsEmailEmpty(true);
+      return;
     }
 
     if (password.length < 4) {
-      setInputMinLength(true);
+      setPasswordLength(true);
+      return;
     }
 
     setIsLoading(true);
@@ -78,21 +82,21 @@ const Signup = () => {
           <Box onSubmit={handleSignUp} component="form" sx={{ display: "flex", flexDirection: "column", gap: 2, marginY: 5 }}>
             <Typography variant="body2">Username</Typography>
             <TextField variant="outlined" onChange={(e) => setUsername(e.target.value)} value={username} data-testid="username-field" inputProps={{ "data-testid": "username-content" }} />
-            {inputMinLength && (
+            {usernameLength && (
               <Typography variant="body2" sx={{ color: "red" }}>
                 Username should be at least 5 characters.
               </Typography>
             )}
             <Typography variant="body2">Email</Typography>
             <TextField variant="outlined" onChange={(e) => setEmail(e.target.value)} value={email} data-testid="email-field" inputProps={{ "data-testid": "email-content" }} />
-            {isEmail && (
+            {isEmailEmpty && (
               <Typography variant="body2" sx={{ color: "red" }}>
                 Email can't be empty.
               </Typography>
             )}
             <Typography variant="body2">Password</Typography>
             <TextField type="password" variant="outlined" onChange={(e) => setPassword(e.target.value)} value={password} data-testid="password-field" inputProps={{ "data-testid": "password-content" }} />
-            {inputMinLength && (
+            {passwordLength && (
               <Typography variant="body2" sx={{ color: "red" }}>
                 Password should be at least 5 characters.
               </Typography>
