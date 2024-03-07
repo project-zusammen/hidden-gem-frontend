@@ -112,7 +112,7 @@ const Signup = () => {
           </Box>
           <Stack>
             <Typography variant="body1" sx={{ textAlign: "center" }}>
-              Not registered yet?{" "}
+              Already registered?{" "}
               <Link data-testid="login-link" to={"/login"} style={{ textDecoration: "none", color: "#0bda73" }}>
                 Log in.
               </Link>
