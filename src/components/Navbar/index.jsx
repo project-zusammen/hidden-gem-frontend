@@ -1,4 +1,4 @@
-import { AppBar, Toolbar, Typography, Grid, Box, Button, IconButton, Menu, MenuList, Select, MenuItem } from "@mui/material";
+import { AppBar, Toolbar, Typography, Grid, Box, Button, IconButton, Menu, MenuList, Select, MenuItem, Paper } from "@mui/material";
 import React, { useRef, useState, useEffect } from "react";
 import logo from "/images/Logo.png";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -37,9 +37,10 @@ const Navbar = () => {
   return (
     <AppBar position="static" sx={{ bgcolor: "neutral.light", padding: "0 46px" }}>
       <Toolbar sx={{ display: { xs: "none", md: "flex" }, height: "80px" }}>
-        <Grid container alignItems="center" justifyContent="space-between">
+        <Grid container sx={{ alignItems: "center" }}>
           <Grid item xs={4}>
-            <Box
+            <Paper
+              elevation={0}
               component="img"
               alt="logo"
               src={logo}
@@ -51,66 +52,61 @@ const Navbar = () => {
           </Grid>
 
           <Grid item sx={{ flexGrow: 1 }} xs={4}>
-            <Grid container spacing={1} justifyContent={"center"}>
-              <Grid item>
-                <Button
-                  style={{ textTransform: "none" }}
-                  sx={{
-                    color: "neutral.dark",
-                    "&:hover": {
-                      backgroundColor: "primary.light",
-                    },
-                  }}
-                >
-                  <Typography variant="h3">Your region:</Typography>
-                  <Select labelId="region-select-label" id="region-select" data-testid="region-select" value={selectedRegion || (regions.length > 0 ? regions[0].public_id : "")} onChange={handleRegionChange}>
-                    {regions.map((region) => (
-                      <MenuItem key={region.public_id} value={region.public_id}>
-                        {region.city}
-                      </MenuItem>
-                    ))}
-                  </Select>
-                </Button>
-              </Grid>
-            </Grid>
+            <Box sx={{ display: "flex", justifyContent: "center" }}>
+              <Button
+                style={{ textTransform: "none" }}
+                sx={{
+                  color: "neutral.dark",
+                  "&:hover": {
+                    backgroundColor: "primary.light",
+                  },
+                }}
+              >
+                <Typography variant="h3">Your region:</Typography>
+                <Select labelId="region-select-label" id="region-select" data-testid="region-select" value={selectedRegion || (regions.length > 0 ? regions[0].public_id : "")} onChange={handleRegionChange}>
+                  {regions.map((region) => (
+                    <MenuItem key={region.public_id} value={region.public_id}>
+                      {region.city}
+                    </MenuItem>
+                  ))}
+                </Select>
+              </Button>
+            </Box>
           </Grid>
 
-          <Grid item xs={4} spacing={0} container justifyContent={"flex-end"} sx={{ display: { xs: "none", md: "flex" } }}>
-            <Grid item>
-              <Button
-                style={{ textTransform: "none" }}
-                sx={{
-                  color: "neutral.dark",
-                  "&:hover": {
-                    backgroundColor: "primary.light",
-                  },
-                  textDecoration: "none",
-                }}
-              >
-                <Typography variant="h3Bold" sx={{}}>
-                  <Link to={"/login"} style={{ textDecoration: "none", color: "inherit" }}>
-                    Log in
-                  </Link>
-                </Typography>
-              </Button>
-            </Grid>
-            <Grid item>
-              <Button
-                style={{ textTransform: "none" }}
-                sx={{
-                  color: "neutral.dark",
-                  "&:hover": {
-                    backgroundColor: "primary.light",
-                  },
-                }}
-              >
-                <Typography variant="h3Bold" sx={{}}>
-                  <Link to={"/signup"} style={{ textDecoration: "none", color: "inherit" }}>
-                    Sign up
-                  </Link>
-                </Typography>
-              </Button>
-            </Grid>
+          <Grid item xs={4} sx={{ display: { xs: "none", md: "flex" }, justifyContent: "flex-end" }}>
+            <Button
+              style={{ textTransform: "none" }}
+              sx={{
+                color: "neutral.dark",
+                "&:hover": {
+                  backgroundColor: "primary.light",
+                },
+                textDecoration: "none",
+              }}
+            >
+              <Typography variant="h3Bold" sx={{}}>
+                <Link to={"/login"} style={{ textDecoration: "none", color: "inherit" }}>
+                  Log in
+                </Link>
+              </Typography>
+            </Button>
+
+            <Button
+              style={{ textTransform: "none" }}
+              sx={{
+                color: "neutral.dark",
+                "&:hover": {
+                  backgroundColor: "primary.light",
+                },
+              }}
+            >
+              <Typography variant="h3Bold" sx={{}}>
+                <Link to={"/signup"} style={{ textDecoration: "none", color: "inherit" }}>
+                  Sign up
+                </Link>
+              </Typography>
+            </Button>
           </Grid>
         </Grid>
       </Toolbar>
