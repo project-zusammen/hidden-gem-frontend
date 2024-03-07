@@ -11,15 +11,11 @@ const Navbar = () => {
   const [navStatus, setNavStatus] = useState(false);
   const iconButtonRef = useRef();
 
-  const fetchRegion = async () => {
-    const data = await getRegion();
-    setRegions(data.data);
-  };
-
-  // trigger deploy
-
   useEffect(() => {
-    fetchRegion();
+    (async () => {
+      const data = await getRegion();
+      setRegions(data.data);
+    })();
   }, []);
 
   const openNav = () => {
