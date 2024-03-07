@@ -11,8 +11,6 @@ const Navbar = () => {
   const [navStatus, setNavStatus] = useState(false);
   const iconButtonRef = useRef();
 
-  const anchorEl = React.useRef();
-
   const fetchRegion = async () => {
     const data = await getRegion();
     setRegions(data.data);
