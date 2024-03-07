@@ -16,6 +16,8 @@ const Navbar = () => {
     setRegions(data.data);
   };
 
+  // trigger deploy
+
   useEffect(() => {
     fetchRegion();
   }, []);
