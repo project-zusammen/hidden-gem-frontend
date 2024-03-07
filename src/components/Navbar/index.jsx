@@ -7,6 +7,7 @@ import { getRegion } from "../../api/region";
 
 const Navbar = () => {
   const [regions, setRegions] = useState([]);
+  const [selectedRegion, setSelectedRegion] = useState("");
 
   const fetchRegion = async () => {
     const data = await getRegion();
@@ -27,9 +28,9 @@ const Navbar = () => {
   };
   const anchorEl = React.useRef();
 
-  // const handleRegionChange = (region) => {
-  //   setRegion(region);
-  // }
+  const handleRegionChange = (e) => {
+    setSelectedRegion(e.target.value);
+  };
 
   return (
     <AppBar position="static" sx={{ bgcolor: "neutral.light", padding: "0 46px" }}>
@@ -60,7 +61,7 @@ const Navbar = () => {
                   }}
                 >
                   <Typography variant="h3">Your region:</Typography>
-                  <Select labelId="region-select-label" id="region-select" data-testid="region-select" value={regions.length > 0 ? regions[0].public_id : ""}>
+                  <Select labelId="region-select-label" id="region-select" data-testid="region-select" value={selectedRegion || (regions.length > 0 ? regions[0].public_id : "")} onChange={handleRegionChange}>
                     {regions.map((region) => (
                       <MenuItem key={region.public_id} value={region.public_id}>
                         {region.city}
