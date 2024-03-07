@@ -6,14 +6,15 @@ import { Link } from "react-router-dom";
 import { getRegion } from "../../api/region";
 
 const Navbar = () => {
-  const [regionOptions, setData] = useState([]);
-  const [region, setRegion] = useState("d1048795-4849-4e45-b839-d6a9579ba56f");
+  const [regions, setRegions] = useState([]);
+
+  const fetchRegion = async () => {
+    const data = await getRegion();
+    setRegions(data.data);
+  };
 
   useEffect(() => {
-    const regionFromApi = getRegion();
-    regionFromApi.then((data) => {
-      setData(data);
-    });
+    fetchRegion();
   }, []);
 
   const [navStatus, setNavStatus] = useState(false);
@@ -26,9 +27,9 @@ const Navbar = () => {
   };
   const anchorEl = React.useRef();
 
-  const handleRegionChange = (region) => {
-    setRegion(region);
-  }
+  // const handleRegionChange = (region) => {
+  //   setRegion(region);
+  // }
 
   return (
     <AppBar position="static" sx={{ bgcolor: "neutral.light", padding: "0 46px" }}>
@@ -59,14 +60,8 @@ const Navbar = () => {
                   }}
                 >
                   <Typography variant="h3">Your region:</Typography>
-                  <Select
-                    labelId="region-select-label"
-                    id="region-select"
-                    data-testid="region-select"
-                    onChange={(e) => handleRegionChange(e.target.value)}
-                    value={region}
-                  >
-                    {regionOptions.map((region) => (
+                  <Select labelId="region-select-label" id="region-select" data-testid="region-select" value={regions.length > 0 ? regions[0].public_id : ""}>
+                    {regions.map((region) => (
                       <MenuItem key={region.public_id} value={region.public_id}>
                         {region.city}
                       </MenuItem>
