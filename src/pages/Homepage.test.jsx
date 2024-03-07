@@ -1,6 +1,6 @@
 import React from "react";
-import Homepage from "./Homepage";
 import { render, screen } from "@testing-library/react";
+import Homepage from "./Homepage";
 
 describe("Homepage", () => {
   test("renders search bar", () => {
