@@ -6,15 +6,22 @@ import { Link } from "react-router-dom";
 import { getRegion } from "../../api/region";
 
 const Navbar = () => {
-  const [regionOptions, setData] = useState([]);
-  const [region, setRegion] = useState("d1048795-4849-4e45-b839-d6a9579ba56f");
+  const [regions, setRegions] = useState([]);
+  const [region, setRegion] = useState('');
 
   useEffect(() => {
     const regionFromApi = getRegion();
     regionFromApi.then((data) => {
-      setData(data);
+      setRegions(data);
     });
   }, []);
+
+  useEffect(() => {
+    if (regions.length > 0 && !region) {
+      setRegion(regions[0]["public_id"]);
+    }
+  }
+  , [regions, region]);
 
   const [navStatus, setNavStatus] = useState(false);
   const iconButtonRef = useRef();
@@ -66,7 +73,7 @@ const Navbar = () => {
                     onChange={(e) => handleRegionChange(e.target.value)}
                     value={region}
                   >
-                    {regionOptions.map((region) => (
+                    {regions.map((region) => (
                       <MenuItem key={region.public_id} value={region.public_id}>
                         {region.city}
                       </MenuItem>
