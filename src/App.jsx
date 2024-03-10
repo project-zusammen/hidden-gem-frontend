@@ -5,12 +5,14 @@ import { ThemeProvider } from "@mui/material";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import theme from "./styles/Theme";
-<<<<<<< HEAD
+
 import "./index.css";
-=======
+
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
->>>>>>> main
+
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
 
 function App() {
   return (
