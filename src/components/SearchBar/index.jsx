@@ -4,11 +4,9 @@ import {
   Tabs,
   TextField,
   Box,
-  IconButton,
   Button,
   InputAdornment,
 } from "@mui/material";
-import SearchIcon from "@mui/icons-material/Search";
 
 const SearchBarWithTabs = () => {
   const [currentTab, setCurrentTab] = useState(0);
@@ -19,6 +17,7 @@ const SearchBarWithTabs = () => {
 
   return (
     <Box
+      data-testid="search-bar"
       sx={{
         display: "flex",
         flexDirection: "column",
@@ -28,13 +27,7 @@ const SearchBarWithTabs = () => {
         marginBottom: "50px",
       }}
     >
-      <Tabs
-        value={currentTab}
-        onChange={handleChange}
-        aria-label="Search tabs"
-        // textColor="neutral"
-        // indicatorColor="neutral.dark"
-      >
+      <Tabs value={currentTab} onChange={handleChange} aria-label="Search tabs">
         <Tab label="Food" />
         <Tab label="Hotel" />
         <Tab label="Cafe" />

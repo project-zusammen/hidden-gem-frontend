@@ -1,17 +1,14 @@
 import React from "react";
-import Homepage from "./Homepage";
 import { render, screen } from "@testing-library/react";
+import Homepage from "./Homepage";
 
 describe("Homepage", () => {
-  test("renders Homepage", () => {
+  test("renders search bar", () => {
     render(<Homepage />);
+    expect(screen.getByTestId("search-bar")).toBeInTheDocument();
   });
-
-  test("renders left, center, and right columns", () => {
+  test("renders body", () => {
     render(<Homepage />);
-
-    expect(screen.getByText(/Left Column/)).toBeInTheDocument();
-    expect(screen.getByText(/Right Column/)).toBeInTheDocument();
-    expect(screen.getByTestId("card")).toBeInTheDocument();
+    expect(screen.getByTestId("body")).toBeInTheDocument();
   });
 });

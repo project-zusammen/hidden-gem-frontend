@@ -19,7 +19,7 @@ import image from "../../images/raja-ampat.jpeg";
 //   }),
 // }));
 
-export default function RecipeReviewCard() {
+export default function ReviewCard() {
   return (
     <Card sx={{ width: 280, height: 380 }}>
       <CardMedia sx={{ height: 140 }} image={image} title="green iguana" />
@@ -27,7 +27,7 @@ export default function RecipeReviewCard() {
         <Typography gutterBottom variant="h5" component="div">
           Nukad Tampaskiring
         </Typography>
-        <Typography variant="body2" color="text.secondary">
+        <Typography data-testid="card-text" variant="body2" color="text.secondary">
           Lizards are a widespread group of squamate reptiles, with over 6,000
           species, ranging across all continents except Antarctica
         </Typography>
