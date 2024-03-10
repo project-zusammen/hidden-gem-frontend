@@ -10,3 +10,23 @@
   background-color: #50c878;
   border-radius: 15px;
 }
+
+.slick-prev:before {
+  font-size: 25px;
+}
+
+.slick-next {
+  right: -10px;
+}
+
+.slick-next:before {
+  font-size: 25px;
+}
+
+.slick-slider {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  margin-left: 50px;
+  margin-right: 50px;
+  padding-left: 18px;
+}
