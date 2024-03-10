@@ -1,4 +1,4 @@
-import { Container, Box, Typography, Stack, Paper, TextField, Button } from "@mui/material";
+import { Container, Box, Typography, Stack, Paper, TextField, Button, IconButton } from "@mui/material";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { EyeOutlined, EyeInvisibleOutlined } from "@ant-design/icons";
@@ -16,8 +16,7 @@ const Signup = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     // handle form submission
-  }
-
+  };
 
   return (
     <Container maxWidth={false} style={{ paddingLeft: 0, paddingRight: 0 }}>
@@ -31,55 +30,37 @@ const Signup = () => {
           </Box>
           <Box component="form" sx={{ display: "flex", flexDirection: "column", gap: 2, marginY: 5 }}>
             <Typography variant="body2">Username</Typography>
-            <TextField 
-              variant="outlined" 
-              onChange={(e) => setUsername(e.target.value)} 
-              placeholder="Username"
-              value={username} 
-              data-testid="username-field" 
-              inputProps={{ "data-testid": "username-content" }} 
-            />
+            <TextField variant="outlined" onChange={(e) => setUsername(e.target.value)} placeholder="Username" value={username} data-testid="username-field" inputProps={{ "data-testid": "username-content" }} />
             <Typography variant="body2">Email</Typography>
-            <TextField 
-              variant="outlined" 
-              onChange={(e) => setEmail(e.target.value)} 
-              placeholder="Email"
-              value={email} 
-              data-testid="email-field" 
-              inputProps={{ "data-testid": "email-content" }} 
-            />
+            <TextField variant="outlined" onChange={(e) => setEmail(e.target.value)} placeholder="Email" value={email} data-testid="email-field" inputProps={{ "data-testid": "email-content" }} />
             <Typography variant="body2">Password</Typography>
-            <div style={{ position: 'relative' }}>
+            <div style={{ position: "relative" }}>
               <TextField
-                type={showPassword ? 'text' : 'password'}
+                type={showPassword ? "text" : "password"}
                 placeholder="Password"
                 onChange={(e) => setPassword(e.target.value)}
                 value={password}
                 data-testid="password-field"
-                style={{ width: '100%' }}
-                inputProps={{ "data-testid": "password-content" }} 
+                style={{ width: "100%" }}
+                inputProps={{ "data-testid": "password-content" }}
               />
-              <div
+              <IconButton
                 style={{
-                  position: 'absolute',
-                  top: '50%',
-                  right: '10px',
-                  transform: 'translateY(-50%)',
-                  cursor: 'pointer',
+                  position: "absolute",
+                  top: "50%",
+                  right: "10px",
+                  transform: "translateY(-50%)",
+                  cursor: "pointer",
                 }}
+                size="small"
                 onClick={handleTogglePasswordVisibility}
-                data-testid={showPassword ? 'show-password' : 'hide-password'}
+                data-testid={showPassword ? "show-password" : "hide-password"}
+                aria-label="toggle-password-visibility"
               >
                 {showPassword ? <EyeOutlined /> : <EyeInvisibleOutlined />}
-              </div>
+              </IconButton>
             </div>
-            <Button 
-              variant="contained" 
-              type="submit" 
-              sx={{ backgroundColor: "#0bda73", ":hover": { backgroundColor: "#0ff582" }, boxShadow: "none" }} 
-              data-testid="signup-button"
-              onClick={handleSubmit}
-            >
+            <Button variant="contained" type="submit" sx={{ backgroundColor: "#0bda73", ":hover": { backgroundColor: "#0ff582" }, boxShadow: "none" }} data-testid="signup-button" onClick={handleSubmit}>
               Sign up
             </Button>
           </Box>
