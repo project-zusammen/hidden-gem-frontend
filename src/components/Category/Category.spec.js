@@ -31,10 +31,12 @@ describe('Category Component', () => {
   it('changes selected category on tab click', async () => {
     render(<Category />);
 
+    const categoryTab1 = await screen.findByTestId('category-tab-1');
     const categoryTab2 = await screen.findByTestId('category-tab-2');
 
     fireEvent.click(categoryTab2);
 
     expect(categoryTab2).toHaveAttribute('aria-selected', 'true');
+    expect(categoryTab1).toHaveAttribute('aria-selected', 'false');
   });
 });
