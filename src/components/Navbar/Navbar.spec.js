@@ -1,6 +1,6 @@
 import React from 'react';
-import { BrowserRouter, MemoryRouter } from "react-router-dom"; 
-import { render, screen, act, fireEvent } from '@testing-library/react';
+import { BrowserRouter } from "react-router-dom"; 
+import { render, screen, act } from '@testing-library/react';
 import Navbar from './index';
 
 jest.mock('../../api/region', () => ({

@@ -1,12 +1,12 @@
 import React from "react";
-import { BrowserRouter } from "react-router-dom"; 
+import { BrowserRouter } from "react-router-dom";
 import { render, screen, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import Login from "./Login";
 
 describe("Login", () => {
   test("renders login form with email and password fields", () => {
-    render( 
+    render(
       <BrowserRouter>
         <Login />
       </BrowserRouter>
@@ -20,10 +20,10 @@ describe("Login", () => {
   });
 
   test("submits form with provided email and password", () => {
-    const emailAddress = 'test@example.com';
-    const password = 'password123';
+    const emailAddress = "test@example.com";
+    const password = "password123";
 
-    render( 
+    render(
       <BrowserRouter>
         <Login />
       </BrowserRouter>
@@ -31,31 +31,31 @@ describe("Login", () => {
 
     const emailInputField = screen.getByTestId("email-content");
     const passwordInputField = screen.getByTestId("password-content");
-    const loginButton = screen.getByTestId("login-button");
+    const form = screen.getByTestId("login-form");
 
     fireEvent.change(emailInputField, { target: { value: emailAddress } });
     fireEvent.change(passwordInputField, { target: { value: password } });
-    fireEvent.click(loginButton);
+    fireEvent.submit(form);
 
     expect(emailInputField).toHaveValue(emailAddress);
     expect(passwordInputField).toHaveValue(password);
   });
 
   test("redirects to signup page when 'Create an account' link is clicked", () => {
-    render( 
+    render(
       <BrowserRouter>
         <Login />
       </BrowserRouter>
     );
 
-    const createAccountLink = screen.getByTestId('create-account-link');
+    const createAccountLink = screen.getByTestId("create-account-link");
     fireEvent.click(createAccountLink);
 
     expect(createAccountLink).toHaveAttribute("href", "/signup");
   });
 
   test("should mask password input", () => {
-    render( 
+    render(
       <BrowserRouter>
         <Login />
       </BrowserRouter>
@@ -66,7 +66,7 @@ describe("Login", () => {
   });
 
   test("should toggle password visibility", () => {
-    render( 
+    render(
       <BrowserRouter>
         <Login />
       </BrowserRouter>
