@@ -1,10 +1,11 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import Carousel from "./index";
+import Body from "./index";
 
-test("Render carousel component", () => {
-  render(<Carousel />);
-
-  const element = screen.getByText(/New Posts/);
-  expect(element).toBeInTheDocument();
+describe("Body component", () => {
+  test("renders Body component", () => {
+    render(<Body />);
+    const headingElement = screen.getByText(/New Reviews/i);
+    expect(headingElement).toBeInTheDocument();
+  });
 });
