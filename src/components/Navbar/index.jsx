@@ -52,6 +52,7 @@ const Navbar = () => {
 
   return (
     <AppBar
+      data-testid="navbar"
       position="static"
       sx={{ bgcolor: "neutral.light", padding: "0 46px" }}
     >
@@ -67,6 +68,7 @@ const Navbar = () => {
                 height: 28,
                 flexGrow: 1,
               }}
+              data-testid="logo"
             />
           </Grid>
 
@@ -90,7 +92,11 @@ const Navbar = () => {
                   onChange={handleRegionChange}
                 >
                   {regions.map((region) => (
-                    <MenuItem key={region.public_id} value={region.public_id}>
+                    <MenuItem
+                      key={region.public_id}
+                      value={region.public_id}
+                      data-testid={`region-option-${region.public_id}`}
+                    >
                       {region.city}
                     </MenuItem>
                   ))}
@@ -121,6 +127,7 @@ const Navbar = () => {
                 <Link
                   to={"/login"}
                   style={{ textDecoration: "none", color: "inherit" }}
+                  data-testid="login-link"
                 >
                   Log in
                 </Link>
@@ -140,6 +147,7 @@ const Navbar = () => {
                 <Link
                   to={"/signup"}
                   style={{ textDecoration: "none", color: "inherit" }}
+                  data-testid="signup-link"
                 >
                   Sign up
                 </Link>
