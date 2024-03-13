@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent, act } from '@testing-library/react';
 
 import Category from './index';
 
@@ -9,8 +9,9 @@ jest.mock('../../api/category', () => ({
 
 describe('Category Component', () => {
   it('renders tabs with categories', async () => {
-    render(<Category />);
-
+    await act(async () => {
+      render(<Category />);
+    });
     await screen.findByTestId('category-tabs');
 
     expect(screen.getByText('Category 1')).toBeInTheDocument();
@@ -18,7 +19,9 @@ describe('Category Component', () => {
   });
 
   it('selects the first category by default', async () => {
-    render(<Category />);
+    await act(async () => {
+      render(<Category />);
+    });
 
     const firstCategory = await screen.findByTestId('category-tab-1');
     const secondCategory = await screen.findByTestId('category-tab-2');
@@ -29,7 +32,9 @@ describe('Category Component', () => {
   });
 
   it('changes selected category on tab click', async () => {
-    render(<Category />);
+    await act(async () => {
+      render(<Category />);
+    });
 
     const categoryTab1 = await screen.findByTestId('category-tab-1');
     const categoryTab2 = await screen.findByTestId('category-tab-2');
