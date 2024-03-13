@@ -3,7 +3,7 @@ import React from "react";
 import { BrowserRouter } from "react-router-dom";
 import { render, screen, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import Signup from "./SignUp";
+import Signup from "./Signup";
 
 describe("Signup", () => {
   test("renders signup form with email and password fields", () => {
@@ -33,9 +33,15 @@ describe("Signup", () => {
       </BrowserRouter>
     );
 
-    const usernameInputField = screen.getByTestId("username-field").querySelector("input");
-    const emailInputField = screen.getByTestId("email-field").querySelector("input");
-    const passwordInputField = screen.getByTestId("password-field").querySelector("input");
+    const usernameInputField = screen
+      .getByTestId("username-field")
+      .querySelector("input");
+    const emailInputField = screen
+      .getByTestId("email-field")
+      .querySelector("input");
+    const passwordInputField = screen
+      .getByTestId("password-field")
+      .querySelector("input");
     const signupButton = screen.getByTestId("signup-button");
 
     fireEvent.change(usernameInputField, { target: { value: username } });
@@ -68,7 +74,9 @@ describe("Signup", () => {
       </BrowserRouter>
     );
 
-    const passwordInputField = screen.getByTestId("password-field").querySelector("input");
+    const passwordInputField = screen
+      .getByTestId("password-field")
+      .querySelector("input");
 
     expect(passwordInputField).toHaveAttribute("type", "password");
   });
@@ -80,7 +88,9 @@ describe("Signup", () => {
       </BrowserRouter>
     );
 
-    const passwordInputField = screen.getByTestId("password-field").querySelector("input");
+    const passwordInputField = screen
+      .getByTestId("password-field")
+      .querySelector("input");
     const showPasswordIcon = screen.getByTestId("hide-password"); // initially hidden
 
     fireEvent.click(showPasswordIcon);
