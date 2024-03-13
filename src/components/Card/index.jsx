@@ -5,7 +5,7 @@ import CardContent from "@mui/material/CardContent";
 import CardActions from "@mui/material/CardActions";
 import Typography from "@mui/material/Typography";
 import { Button } from "@mui/material";
-import image from '../../images/raja-ampat.jpeg';
+import image from "../../images/raja-ampat.jpeg";
 
 // const ExpandMore = styled((props) => {
 //   // eslint-disable-next-line no-unused-vars
@@ -29,17 +29,30 @@ export default function ReviewCard() {
         title="card image"
       />
       <CardContent>
-        <Typography data-testid="card-title" gutterBottom variant="h5" component="div">
+        <Typography
+          data-testid="card-title"
+          gutterBottom
+          variant="h5"
+          component="div"
+        >
           Lizard
         </Typography>
-        <Typography data-testid="card-text" variant="body2" color="text.secondary">
+        <Typography
+          data-testid="card-text"
+          variant="body2"
+          color="text.secondary"
+        >
           Lizards are a widespread group of squamate reptiles, with over 6,000
           species, ranging across all continents except Antarctica
         </Typography>
       </CardContent>
       <CardActions>
-        <Button data-testid="upvotes" size="small">10 Upvotes</Button>
-        <Button data-testid="detail" size="small">Learn More</Button>
+        <Button data-testid="upvotes" size="small">
+          10 Upvotes
+        </Button>
+        <Button data-testid="detail" size="small">
+          Learn More
+        </Button>
       </CardActions>
     </Card>
   );

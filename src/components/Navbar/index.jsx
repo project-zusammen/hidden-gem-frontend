@@ -1,4 +1,17 @@
-import { AppBar, Toolbar, Typography, Grid, Box, Button, IconButton, Menu, MenuList, Select, MenuItem, Paper } from "@mui/material";
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  Grid,
+  Box,
+  Button,
+  IconButton,
+  Menu,
+  MenuList,
+  Select,
+  MenuItem,
+  Paper,
+} from "@mui/material";
 import React, { useRef, useState, useEffect } from "react";
 import logo from "/images/Logo.png";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -7,7 +20,7 @@ import { getRegion } from "../../api/region";
 
 const Navbar = () => {
   const [regions, setRegions] = useState([]);
-  const [region, setRegion] = useState('');
+  const [region, setRegion] = useState("");
 
   useEffect(() => {
     (async () => {
@@ -20,8 +33,7 @@ const Navbar = () => {
     if (regions.length > 0 && !region) {
       setRegion(regions[0]["public_id"]);
     }
-  }
-  , [regions, region]);
+  }, [regions, region]);
 
   const [navStatus, setNavStatus] = useState(false);
   const iconButtonRef = useRef();
@@ -39,7 +51,10 @@ const Navbar = () => {
   };
 
   return (
-    <AppBar position="static" sx={{ bgcolor: "neutral.light", padding: "0 46px" }}>
+    <AppBar
+      position="static"
+      sx={{ bgcolor: "neutral.light", padding: "0 46px" }}
+    >
       <Toolbar sx={{ display: { xs: "none", md: "flex" }, height: "80px" }}>
         <Grid container sx={{ alignItems: "center" }}>
           <Grid item xs={4}>
@@ -67,7 +82,13 @@ const Navbar = () => {
                 }}
               >
                 <Typography variant="h3">Your region:</Typography>
-                <Select labelId="region-select-label" id="region-select" data-testid="region-select" value={region} onChange={handleRegionChange}>
+                <Select
+                  labelId="region-select-label"
+                  id="region-select"
+                  data-testid="region-select"
+                  value={region}
+                  onChange={handleRegionChange}
+                >
                   {regions.map((region) => (
                     <MenuItem key={region.public_id} value={region.public_id}>
                       {region.city}
@@ -78,7 +99,14 @@ const Navbar = () => {
             </Box>
           </Grid>
 
-          <Grid item xs={4} sx={{ display: { xs: "none", md: "flex" }, justifyContent: "flex-end" }}>
+          <Grid
+            item
+            xs={4}
+            sx={{
+              display: { xs: "none", md: "flex" },
+              justifyContent: "flex-end",
+            }}
+          >
             <Button
               style={{ textTransform: "none" }}
               sx={{
@@ -90,7 +118,10 @@ const Navbar = () => {
               }}
             >
               <Typography variant="h3Bold" sx={{}}>
-                <Link to={"/login"} style={{ textDecoration: "none", color: "inherit" }}>
+                <Link
+                  to={"/login"}
+                  style={{ textDecoration: "none", color: "inherit" }}
+                >
                   Log in
                 </Link>
               </Typography>
@@ -106,7 +137,10 @@ const Navbar = () => {
               }}
             >
               <Typography variant="h3Bold" sx={{}}>
-                <Link to={"/signup"} style={{ textDecoration: "none", color: "inherit" }}>
+                <Link
+                  to={"/signup"}
+                  style={{ textDecoration: "none", color: "inherit" }}
+                >
                   Sign up
                 </Link>
               </Typography>
@@ -125,7 +159,13 @@ const Navbar = () => {
           padding: "10px",
         }}
       >
-        <IconButton size="large" edge="start" color="inherit" onClick={openNav} ref={iconButtonRef}>
+        <IconButton
+          size="large"
+          edge="start"
+          color="inherit"
+          onClick={openNav}
+          ref={iconButtonRef}
+        >
           <MenuIcon />
         </IconButton>
         <Menu
