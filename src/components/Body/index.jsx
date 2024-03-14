@@ -16,7 +16,7 @@ const Body = () => {
     initialSlide: 0,
     responsive: [
       {
-        breakpoint: 1024,
+        breakpoint: 1280,
         settings: {
           slidesToShow: 3,
           slidesToScroll: 3,
@@ -25,7 +25,7 @@ const Body = () => {
         },
       },
       {
-        breakpoint: 768,
+        breakpoint: 960,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2,
@@ -33,7 +33,7 @@ const Body = () => {
         },
       },
       {
-        breakpoint: 390,
+        breakpoint: 750,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
