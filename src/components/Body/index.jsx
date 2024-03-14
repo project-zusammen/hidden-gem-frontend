@@ -42,8 +42,10 @@ const Body = () => {
   };
   return (
     <>
-      <h1 className="body-post">New Reviews</h1>
-      <div className="slider-container">
+      <h1 className="body-post" data-testid="new-reviews-title">
+        New Reviews
+      </h1>
+      <div className="slider-container" data-testid="review-sliders">
         <Slider {...settings}>
           <div>
             <Card />
