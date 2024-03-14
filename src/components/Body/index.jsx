@@ -1,4 +1,5 @@
 import React from "react";
+import { Typography, Grid } from "@mui/material";
 import Card from "../Card";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -6,7 +7,7 @@ import "slick-carousel/slick/slick-theme.css";
 import "./index.css";
 
 const Body = () => {
-  var settings = {
+  const settings = {
     dots: true,
     infinite: false,
     speed: 500,
@@ -42,28 +43,32 @@ const Body = () => {
   };
   return (
     <>
-      <h1 className="body-post" data-testid="new-reviews-title">
+      <Typography
+        variant="h1"
+        className="body-post"
+        data-testid="new-reviews-title"
+      >
         New Reviews
-      </h1>
-      <div className="slider-container" data-testid="review-sliders">
+      </Typography>
+      <Grid className="slider-container" data-testid="review-sliders">
         <Slider {...settings}>
-          <div>
+          <Grid item>
             <Card />
-          </div>
-          <div>
+          </Grid>
+          <Grid item>
             <Card />
-          </div>
-          <div>
+          </Grid>
+          <Grid item>
             <Card />
-          </div>
-          <div>
+          </Grid>
+          <Grid item>
             <Card />
-          </div>
-          <div>
+          </Grid>
+          <Grid item>
             <Card />
-          </div>
+          </Grid>
         </Slider>
-      </div>
+      </Grid>
     </>
   );
 };
