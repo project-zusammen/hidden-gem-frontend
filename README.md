@@ -29,6 +29,8 @@ List the main features of your application.
    ```bash
    git clone git@github.com:project-zusammen/hidden-gem-frontend.git
 
+   ```
+
 2. Run `npm install`
 
 3. Run `npm run dev`
@@ -36,3 +38,5 @@ List the main features of your application.
 4. Run the test: `npm test`
 
 5. Run a test on a specific file: `npm test {file-path}`
+
+6. Run and watch the test `npm run test -- --watch {file-path}`
