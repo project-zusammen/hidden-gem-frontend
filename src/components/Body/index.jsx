@@ -42,7 +42,7 @@ const Body = () => {
     ],
   };
   return (
-    <>
+    <Grid data-testid="body">
       <Typography
         variant="h1"
         className="body-post"
@@ -69,7 +69,7 @@ const Body = () => {
           </Grid>
         </Slider>
       </Grid>
-    </>
+    </Grid>
   );
 };
 
