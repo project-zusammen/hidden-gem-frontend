@@ -24,10 +24,19 @@ export default function ReviewCard() {
     <Card sx={{ width: 280, height: 380 }}>
       <CardMedia sx={{ height: 140 }} image={image} title="green iguana" />
       <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
-          Nukad Tampaskiring
+        <Typography
+          data-testid="card-title"
+          gutterBottom
+          variant="h5"
+          component="div"
+        >
+          Lizard
         </Typography>
-        <Typography variant="body2" color="text.secondary">
+        <Typography
+          data-testid="card-text"
+          variant="body2"
+          color="text.secondary"
+        >
           Lizards are a widespread group of squamate reptiles, with over 6,000
           species, ranging across all continents except Antarctica
         </Typography>
@@ -45,6 +54,7 @@ export default function ReviewCard() {
             color: "primary.light",
           }}
           className="vote"
+          data-testid="upvotes"
         >
           10 Upvotes
         </Button>
@@ -56,6 +66,7 @@ export default function ReviewCard() {
           sx={{
             marginRight: "25px",
           }}
+          data-testid="detail"
         >
           View
         </Button>

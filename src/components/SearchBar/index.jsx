@@ -1,20 +1,9 @@
-import React, { useState } from "react";
-import {
-  Tab,
-  Tabs,
-  TextField,
-  Box,
-  Button,
-  InputAdornment,
-} from "@mui/material";
+import React from "react";
+import { TextField, Box, IconButton } from "@mui/material";
+import SearchIcon from "@mui/icons-material/Search";
+import Category from "../Category";
 
 const SearchBarWithTabs = () => {
-  const [currentTab, setCurrentTab] = useState(0);
-
-  const handleChange = (event, newValue) => {
-    setCurrentTab(newValue);
-  };
-
   return (
     <Box
       data-testid="search-bar"
@@ -27,37 +16,12 @@ const SearchBarWithTabs = () => {
         marginBottom: "50px",
       }}
     >
-      <Tabs value={currentTab} onChange={handleChange} aria-label="Search tabs">
-        <Tab label="Food" />
-        <Tab label="Hotel" />
-        <Tab label="Cafe" />
-        <Tab label="Outdoor" />
-        <Tab label="Entertainment" />
-        <Tab label="Shopping" />
-      </Tabs>
+      <Category />
       <Box sx={{ display: "flex", alignItems: "center", marginTop: 2 }}>
-        <TextField
-          label="Search"
-          size="small"
-          sx={{ width: 600 }}
-          InputProps={{
-            sx: { borderRadius: 20, height: "45px" },
-            endAdornment: (
-              <InputAdornment position="end">
-                <Button
-                  variant="contained"
-                  sx={{
-                    borderRadius: 20,
-                    position: "relative",
-                    right: "-10px",
-                  }}
-                >
-                  Search
-                </Button>
-              </InputAdornment>
-            ),
-          }}
-        />
+        <TextField label="Search" size="small" />
+        <IconButton type="submit" aria-label="search">
+          <SearchIcon />
+        </IconButton>
       </Box>
     </Box>
   );
