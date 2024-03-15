@@ -55,5 +55,8 @@ module.exports = {
   moduleNameMapper: {
     '\\.(jpg|jpeg|png|gif|svg)$': '<rootDir>/mocks/imageMock.js',
     "\\.(css|less)$": "<rootDir>/mocks/imageMock.js"
-  }
+  },
+  transform: {
+    "^.+\\.(js|jsx|mjs)$": ["esbuild-jest", { loaders: { ".js": "jsx" } }],
+  },
 };
