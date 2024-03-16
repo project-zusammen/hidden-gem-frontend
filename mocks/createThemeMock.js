@@ -1,6 +1,4 @@
-import createTheme from "@mui/material/styles/createTheme";
-
-const theme = createTheme({
+const mockTheme = {
   typography: {
     h1: {
       fontSize: "24px",
@@ -45,6 +43,7 @@ const theme = createTheme({
       white: "#FEFEFE",
     },
   },
-});
-
-export default theme;
+};
+  
+export default mockTheme;
+  
