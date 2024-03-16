@@ -1,6 +1,18 @@
 import React from "react";
-import Homepage from "./Homepage";
 import { render, screen } from "@testing-library/react";
+import Homepage from "./Homepage";
+
+jest.mock("../api/category", () => ({
+  getCategory: jest.fn(() =>
+    // eslint-disable-next-line no-undef
+    Promise.resolve({
+      data: [
+        { public_id: "1", name: "Category 1" },
+        { public_id: "2", name: "Category 2" },
+      ],
+    })
+  ),
+}));
 
 describe("Homepage", () => {
   test("renders search bar", () => {
