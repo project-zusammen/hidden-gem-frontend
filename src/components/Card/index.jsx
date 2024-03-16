@@ -21,7 +21,7 @@ import image from "../../images/raja-ampat.jpeg";
 
 export default function ReviewCard() {
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ width: 280, height: 380 }}>
       <CardMedia sx={{ height: 140 }} image={image} title="green iguana" />
       <CardContent>
         <Typography
@@ -41,12 +41,34 @@ export default function ReviewCard() {
           species, ranging across all continents except Antarctica
         </Typography>
       </CardContent>
-      <CardActions>
-        <Button data-testid="upvotes" size="small">
+      <CardActions
+        sx={{
+          display: "flex",
+          justifyContent: "space-between",
+          marginTop: "30px",
+        }}
+      >
+        <Button
+          size="small"
+          sx={{
+            color: "primary.light",
+          }}
+          className="vote"
+          data-testid="upvotes"
+        >
           10 Upvotes
         </Button>
-        <Button data-testid="detail" size="small">
-          Learn More
+        <Button
+          size="small"
+          color="secondary"
+          variant="contained"
+          className="view"
+          sx={{
+            marginRight: "25px",
+          }}
+          data-testid="detail"
+        >
+          View
         </Button>
       </CardActions>
     </Card>
