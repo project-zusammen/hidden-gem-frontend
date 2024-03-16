@@ -1,21 +1,66 @@
 import { Container, Box, Typography, Stack, Paper, TextField, Button, IconButton } from "@mui/material";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { EyeOutlined, EyeInvisibleOutlined } from "@ant-design/icons";
+import { signUp } from "../api/signup";
 
 const Signup = () => {
+  const navigate = useNavigate();
+
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [isDataExist, setIsDataExist] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [usernameLength, setUsernameLength] = useState(false);
+  const [isEmailEmpty, setIsEmailEmpty] = useState(false);
+  const [passwordLength, setPasswordLength] = useState(false);
+
+  const handleSignUp = async (e) => {
+    e.preventDefault();
+
+    if (username.length < 4) {
+      setUsernameLength(true);
+      return;
+    }
+
+    if (email.length === 0) {
+      setIsEmailEmpty(true);
+      return;
+    }
+
+    if (password.length < 4) {
+      setPasswordLength(true);
+      return;
+    }
+
+    setIsLoading(true);
+
+    try {
+      const response = await signUp({ username, email, password });
+
+      setUsername("");
+      setEmail("");
+      setPassword("");
+
+      if (response.status === "success") {
+        navigate("/");
+      }
+    } catch (error) {
+      if (error.response.data.status === "error") {
+        setIsDataExist(true);
+      } else {
+        console.log(error);
+      }
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   const handleTogglePasswordVisibility = () => {
     setShowPassword((prevShowPassword) => !prevShowPassword);
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // handle form submission
   };
 
   return (
@@ -28,11 +73,21 @@ const Signup = () => {
             </Typography>
             <Typography variant="h3">Start your journey. Sign up today!</Typography>
           </Box>
-          <Box component="form" sx={{ display: "flex", flexDirection: "column", gap: 2, marginY: 5 }}>
+          <Box onSubmit={handleSignUp} component="form" sx={{ display: "flex", flexDirection: "column", gap: 2, marginY: 5 }}>
             <Typography variant="body2">Username</Typography>
             <TextField variant="outlined" onChange={(e) => setUsername(e.target.value)} placeholder="Username" value={username} data-testid="username-field" inputProps={{ "data-testid": "username-content" }} />
+            {usernameLength && (
+              <Typography variant="body2" sx={{ color: "red" }}>
+                Username should be at least 5 characters.
+              </Typography>
+            )}
             <Typography variant="body2">Email</Typography>
             <TextField variant="outlined" onChange={(e) => setEmail(e.target.value)} placeholder="Email" value={email} data-testid="email-field" inputProps={{ "data-testid": "email-content" }} />
+            {isEmailEmpty && (
+              <Typography variant="body2" sx={{ color: "red" }}>
+                Email can't be empty.
+              </Typography>
+            )}
             <Typography variant="body2">Password</Typography>
             <div style={{ position: "relative" }}>
               <TextField
@@ -44,6 +99,11 @@ const Signup = () => {
                 style={{ width: "100%" }}
                 inputProps={{ "data-testid": "password-content" }}
               />
+              {passwordLength && (
+                <Typography variant="body2" sx={{ color: "red" }}>
+                  Password should be at least 5 characters.
+                </Typography>
+              )}
               <IconButton
                 style={{
                   position: "absolute",
@@ -60,13 +120,18 @@ const Signup = () => {
                 {showPassword ? <EyeOutlined /> : <EyeInvisibleOutlined />}
               </IconButton>
             </div>
-            <Button variant="contained" type="submit" sx={{ backgroundColor: "#0bda73", ":hover": { backgroundColor: "#0ff582" }, boxShadow: "none" }} data-testid="signup-button" onClick={handleSubmit}>
-              Sign up
+            <Button variant="contained" type="submit" sx={{ backgroundColor: "#0bda73", ":hover": { backgroundColor: "#0ff582" }, boxShadow: "none" }} data-testid="signup-button">
+              {!isLoading ? "Sign up" : "Loading ..."}
             </Button>
+            {isDataExist && (
+              <Typography variant="body2" sx={{ color: "red" }}>
+                Register user failed. Your email is already registered!
+              </Typography>
+            )}
           </Box>
           <Stack>
             <Typography variant="body1" sx={{ textAlign: "center" }}>
-              Not registered yet?{" "}
+              Already registered?{" "}
               <Link data-testid="login-link" to={"/login"} style={{ textDecoration: "none", color: "#0bda73" }}>
                 Log in.
               </Link>
