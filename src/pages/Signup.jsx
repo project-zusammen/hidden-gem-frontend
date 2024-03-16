@@ -1,9 +1,9 @@
 import { Container, Box, Typography, Stack, Paper, TextField, Button, IconButton } from "@mui/material";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { EyeOutlined, EyeInvisibleOutlined } from "@ant-design/icons";
+import { signUp } from "../api/signup";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -39,25 +39,13 @@ const Signup = () => {
     setIsLoading(true);
 
     try {
-      const response = await axios.post(
-        `${API_BASE_URL}/user/signup`,
-        {
-          username: username.trim(),
-          email: email.trim(),
-          password: password.trim(),
-        },
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      const response = await signUp({ username, email, password });
 
       setUsername("");
       setEmail("");
       setPassword("");
 
-      if (response.data.status === "success") {
+      if (response.status === "success") {
         navigate("/");
       }
     } catch (error) {
