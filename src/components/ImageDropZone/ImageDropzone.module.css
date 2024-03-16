@@ -1,0 +1,32 @@
+/* ImageDropzone.module.css */
+
+.dropzone {
+    border: 2px dashed #ccc;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+  }
+  
+  .dropzone p {
+    margin: 0;
+  }
+  
+  .dropzone:hover {
+    border-color: #333;
+  }
+  
+  .dropzone.active {
+    border-color: #2196F3;
+  }
+  
+  /* Additional styling for the uploaded image */
+  .previewImage img {
+    max-width: 100%;
+    max-height: 200px; /* Adjust as needed */
+    margin-top: 10px;
+  }
+  
+  .previewImage p {
+    margin: 0;
+  }
+  

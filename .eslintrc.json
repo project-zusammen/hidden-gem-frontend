@@ -12,7 +12,8 @@
     "react-refresh/only-export-components": [
       "warn",
       { "allowConstantExport": true }
-    ]
+    ],
+    "react/js-uses-import-meta": "off"
   },
   "plugins": ["jest", "react", "testing-library", "react-refresh"],
   "env": {
