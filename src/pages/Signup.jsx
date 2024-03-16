@@ -11,6 +11,7 @@ const Signup = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const [isDataExist, setIsDataExist] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [usernameLength, setUsernameLength] = useState(false);
@@ -69,7 +70,6 @@ const Signup = () => {
       setIsLoading(false);
     }
   };
-  const [showPassword, setShowPassword] = useState(false);
 
   const handleTogglePasswordVisibility = () => {
     setShowPassword((prevShowPassword) => !prevShowPassword);
