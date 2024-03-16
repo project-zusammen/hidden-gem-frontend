@@ -9,16 +9,59 @@ import {
   IconButton,
 } from "@mui/material";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { EyeOutlined, EyeInvisibleOutlined } from "@ant-design/icons";
+import { login } from "../../api/login";
 
 const Login = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isEmailEmpty, setIsEmailEmpty] = useState(false);
+  const [isDataExist, setIsDataExist] = useState(false);
+  const [passwordLength, setPasswordLength] = useState(false);
+  const [token, setToken] = useState("");
 
   const handleTogglePasswordVisibility = () => {
     setShowPassword((prevShowPassword) => !prevShowPassword);
+  };
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+
+    if (email.length === 0) {
+      setIsEmailEmpty(true);
+      return;
+    }
+
+    if (password.length < 4) {
+      setPasswordLength(true);
+      return;
+    }
+
+    setIsLoading(true);
+
+    try {
+      const response = await login({ email, password });
+      console.log("response", response);
+      setEmail("");
+      setPassword("");
+
+      if (response.status === "success") {
+        setToken(response.token);
+        navigate("/");
+      }
+    } catch (error) {
+      if (error.response.data.status === "error") {
+        setIsDataExist(true);
+      } else {
+        console.log(error);
+      }
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -52,6 +95,8 @@ const Login = () => {
               gap: 2,
               marginY: 5,
             }}
+            onSubmit={handleLogin}
+            data-test-id="login-form"
           >
             <Typography variant="body2">Email</Typography>
             <TextField
@@ -98,8 +143,9 @@ const Login = () => {
                 ":hover": { backgroundColor: "#0ff582" },
                 boxShadow: "none",
               }}
+              disable={isLoading}
             >
-              Log in
+              {!isLoading ? "Login" : "Loading ..."}
             </Button>
           </Box>
           <Stack>
