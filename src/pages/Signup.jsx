@@ -40,7 +40,7 @@ const Signup = () => {
 
     try {
       const response = await axios.post(
-        `${import.meta.env.API_BASE_URL}/user/signup`,
+        `${API_BASE_URL}/user/signup`,
         {
           username: username.trim(),
           email: email.trim(),
