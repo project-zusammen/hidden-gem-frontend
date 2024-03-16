@@ -53,4 +53,32 @@ describe("Login", () => {
 
     expect(createAccountLink).toHaveAttribute("href", "/signup");
   });
+
+  test("should mask password input", () => {
+    render( 
+      <BrowserRouter>
+        <Login />
+      </BrowserRouter>
+    );
+
+    const passwordInputField = screen.getByTestId("password-content");
+    expect(passwordInputField).toHaveAttribute("type", "password");
+  });
+
+  test("should toggle password visibility", () => {
+    render( 
+      <BrowserRouter>
+        <Login />
+      </BrowserRouter>
+    );
+
+    const passwordInputField = screen.getByTestId("password-content");
+    const showPasswordButton = screen.getByTestId("hide-password"); // initially hidden
+
+    fireEvent.click(showPasswordButton);
+    expect(passwordInputField).toHaveAttribute("type", "text");
+
+    fireEvent.click(showPasswordButton);
+    expect(passwordInputField).toHaveAttribute("type", "password");
+  });
 });

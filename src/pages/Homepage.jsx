@@ -9,7 +9,7 @@ const Homepage = () => {
       <Grid container justifyContent="center">
         <Grid item xs={12}>
           <SearchBar />
-          <Body /> 
+          <Body />
         </Grid>
       </Grid>
     </Container>
