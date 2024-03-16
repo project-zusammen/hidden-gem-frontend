@@ -1,6 +1,5 @@
 import React from "react";
-import { TextField, Box, IconButton } from "@mui/material";
-import SearchIcon from "@mui/icons-material/Search";
+import { TextField, Box, Button, InputAdornment } from "@mui/material";
 import Category from "../Category";
 
 const SearchBarWithTabs = () => {
@@ -18,14 +17,28 @@ const SearchBarWithTabs = () => {
     >
       <Category />
       <Box sx={{ display: "flex", alignItems: "center", marginTop: 2 }}>
-        <TextField label="Search" size="small" data-testid="label-search" />
-        <IconButton
-          type="submit"
-          aria-label="search"
-          data-testid="search-button"
-        >
-          <SearchIcon />
-        </IconButton>
+        <TextField
+          label="Search"
+          size="small"
+          sx={{ width: 600 }}
+          InputProps={{
+            sx: { borderRadius: 20, height: "45px" },
+            endAdornment: (
+              <InputAdornment position="end">
+                <Button
+                  variant="contained"
+                  sx={{
+                    borderRadius: 20,
+                    position: "relative",
+                    right: "-10px",
+                  }}
+                >
+                  Search
+                </Button>
+              </InputAdornment>
+            ),
+          }}
+        />
       </Box>
     </Box>
   );
