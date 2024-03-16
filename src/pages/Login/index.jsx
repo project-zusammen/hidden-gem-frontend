@@ -1,4 +1,13 @@
-import { Container, Box, Typography, Stack, Paper, TextField, Button, IconButton } from "@mui/material";
+import {
+  Container,
+  Box,
+  Typography,
+  Stack,
+  Paper,
+  TextField,
+  Button,
+  IconButton,
+} from "@mui/material";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { EyeOutlined, EyeInvisibleOutlined } from "@ant-design/icons";
@@ -14,7 +23,20 @@ const Login = () => {
 
   return (
     <Container maxWidth={false} style={{ paddingLeft: 0, paddingRight: 0 }}>
-      <Paper variant="outlined" sx={{ paddingY: "50px", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", marginTop: "50px", marginBottom: "50px", maxWidth: "500px", marginX: "auto" }}>
+      <Paper
+        variant="outlined"
+        sx={{
+          paddingY: "50px",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          marginTop: "50px",
+          marginBottom: "50px",
+          maxWidth: "500px",
+          marginX: "auto",
+        }}
+      >
         <Stack spacing={4} sx={{ width: "80%" }}>
           <Box>
             <Typography variant="h1" gutterBottom textAlign={"start"}>
@@ -22,9 +44,24 @@ const Login = () => {
             </Typography>
             <Typography variant="h3">Hi, welcome back!</Typography>
           </Box>
-          <Box component="form" sx={{ display: "flex", flexDirection: "column", gap: 2, marginY: 5 }}>
+          <Box
+            component="form"
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              gap: 2,
+              marginY: 5,
+            }}
+          >
             <Typography variant="body2">Email</Typography>
-            <TextField placeholder="Email" variant="outlined" onChange={(event) => setEmail(event.target.value)} value={email} data-testid="email-field" inputProps={{ "data-testid": "email-content" }} />
+            <TextField
+              placeholder="Email"
+              variant="outlined"
+              onChange={(event) => setEmail(event.target.value)}
+              value={email}
+              data-testid="email-field"
+              inputProps={{ "data-testid": "email-content" }}
+            />
             <Typography variant="body2">Password</Typography>
             <div style={{ position: "relative" }}>
               <TextField
@@ -52,14 +89,27 @@ const Login = () => {
                 {showPassword ? <EyeOutlined /> : <EyeInvisibleOutlined />}
               </IconButton>
             </div>
-            <Button data-testid="login-button" variant="contained" type="submit" sx={{ backgroundColor: "#0bda73", ":hover": { backgroundColor: "#0ff582" }, boxShadow: "none" }}>
+            <Button
+              data-testid="login-button"
+              variant="contained"
+              type="submit"
+              sx={{
+                backgroundColor: "#0bda73",
+                ":hover": { backgroundColor: "#0ff582" },
+                boxShadow: "none",
+              }}
+            >
               Log in
             </Button>
           </Box>
           <Stack>
             <Typography variant="body1" sx={{ textAlign: "center" }}>
               Not registered yet?{" "}
-              <Link data-testid="create-account-link" to={"/signup"} style={{ textDecoration: "none", color: "#0bda73" }}>
+              <Link
+                data-testid="create-account-link"
+                to={"/signup"}
+                style={{ textDecoration: "none", color: "#0bda73" }}
+              >
                 Create an account.
               </Link>
             </Typography>
