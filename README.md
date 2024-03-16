@@ -40,3 +40,5 @@ List the main features of your application.
 5. Run a test on a specific file: `npm test {file-path}`
 
 6. Run and watch the test `npm run test -- --watch {file-path}`
+
+7. Copy. env-template and rename it as .env, fill in the creds

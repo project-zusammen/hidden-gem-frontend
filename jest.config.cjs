@@ -55,5 +55,5 @@ module.exports = {
   moduleNameMapper: {
     '\\.(jpg|jpeg|png|gif|svg)$': '<rootDir>/mocks/imageMock.js',
     "\\.(css|less)$": "<rootDir>/mocks/imageMock.js"
-  }
+  },
 };

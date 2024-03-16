@@ -1,5 +1,5 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import { render, screen, act } from "@testing-library/react";
 import Homepage from "./Homepage";
 
 jest.mock("../api/category", () => ({
@@ -15,12 +15,17 @@ jest.mock("../api/category", () => ({
 }));
 
 describe("Homepage", () => {
-  test("renders search bar", () => {
-    render(<Homepage />);
+  test("renders search bar", async () => {
+    await act(async () => {
+      render(<Homepage />);
+    });
     expect(screen.getByTestId("search-bar")).toBeInTheDocument();
   });
-  test("renders body", () => {
-    render(<Homepage />);
+
+  test("renders body", async () => {
+    await act(async () => {
+      render(<Homepage />);
+    });
     expect(screen.getByTestId("body")).toBeInTheDocument();
   });
 });

@@ -1,30 +1,66 @@
-import { AppBar, Toolbar, Typography, Grid, Box, Button, IconButton, Menu, MenuList, MenuItem } from "@mui/material";
-import React, { useRef, useState } from "react";
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  Grid,
+  Box,
+  Button,
+  IconButton,
+  Menu,
+  MenuList,
+  Select,
+  MenuItem,
+  Paper,
+} from "@mui/material";
+import React, { useRef, useState, useEffect } from "react";
 import logo from "/images/Logo.png";
 import MenuIcon from "@mui/icons-material/Menu";
-import ArrowDropDown from "@mui/icons-material/ArrowDropDown";
 import { Link } from "react-router-dom";
-import PropTypes from "prop-types";
+import { getRegion } from "../../api/region";
 
-const Navbar = ({ region }) => {
+const Navbar = () => {
+  const [regions, setRegions] = useState([]);
+  const [region, setRegion] = useState("");
+
+  useEffect(() => {
+    (async () => {
+      const data = await getRegion();
+      setRegions(data.data);
+    })();
+  }, []);
+
+  useEffect(() => {
+    if (regions.length > 0 && !region) {
+      setRegion(regions[0]["public_id"]);
+    }
+  }, [regions, region]);
+
   const [navStatus, setNavStatus] = useState(false);
   const iconButtonRef = useRef();
+
   const openNav = () => {
     setNavStatus(true);
   };
+
   const closeNav = (e) => {
     setNavStatus(false);
   };
-  const anchorEl = React.useRef();
-  if (!region) {
-    region = "Jakarta";
-  }
+
+  const handleRegionChange = (e) => {
+    setRegion(e.target.value);
+  };
+
   return (
-    <AppBar position="static" sx={{ bgcolor: "neutral.light", padding: "0 46px" }}>
+    <AppBar
+      data-testid="navbar"
+      position="static"
+      sx={{ bgcolor: "neutral.light", padding: "0 46px" }}
+    >
       <Toolbar sx={{ display: { xs: "none", md: "flex" }, height: "80px" }}>
-        <Grid container alignItems="center" justifyContent="space-between">
+        <Grid container sx={{ alignItems: "center" }}>
           <Grid item xs={4}>
-            <Box
+            <Paper
+              elevation={0}
               component="img"
               alt="logo"
               src={logo}
@@ -32,64 +68,91 @@ const Navbar = ({ region }) => {
                 height: 28,
                 flexGrow: 1,
               }}
+              data-testid="logo"
             />
           </Grid>
 
           <Grid item sx={{ flexGrow: 1 }} xs={4}>
-            <Grid container spacing={1} justifyContent={"center"}>
-              <Grid item>
-                <Button
-                  style={{ textTransform: "none" }}
-                  sx={{
-                    color: "neutral.dark",
-                    "&:hover": {
-                      backgroundColor: "primary.light",
-                    },
-                  }}
+            <Box sx={{ display: "flex", justifyContent: "center" }}>
+              <Button
+                style={{ textTransform: "none" }}
+                sx={{
+                  color: "neutral.dark",
+                  "&:hover": {
+                    backgroundColor: "primary.light",
+                  },
+                }}
+              >
+                <Typography variant="h3">Your region:</Typography>
+                <Select
+                  labelId="region-select-label"
+                  id="region-select"
+                  data-testid="region-select"
+                  value={region}
+                  onChange={handleRegionChange}
                 >
-                  <Typography variant="h3">Your region: {region}</Typography>
-                  <ArrowDropDown />
-                </Button>
-              </Grid>
-            </Grid>
+                  {regions.map((region) => (
+                    <MenuItem
+                      key={region.public_id}
+                      value={region.public_id}
+                      data-testid={`region-option-${region.public_id}`}
+                    >
+                      {region.city}
+                    </MenuItem>
+                  ))}
+                </Select>
+              </Button>
+            </Box>
           </Grid>
 
-          <Grid item xs={4} spacing={0} container justifyContent={"flex-end"} sx={{ display: { xs: "none", md: "flex" } }}>
-            <Grid item>
-              <Button
-                style={{ textTransform: "none" }}
-                sx={{
-                  color: "neutral.dark",
-                  "&:hover": {
-                    backgroundColor: "primary.light",
-                  },
-                  textDecoration: "none",
-                }}
-              >
-                <Typography variant="h3Bold" sx={{}}>
-                  <Link to={"/login"} style={{ textDecoration: "none", color: "inherit" }}>
-                    Log in
-                  </Link>
-                </Typography>
-              </Button>
-            </Grid>
-            <Grid item>
-              <Button
-                style={{ textTransform: "none" }}
-                sx={{
-                  color: "neutral.dark",
-                  "&:hover": {
-                    backgroundColor: "primary.light",
-                  },
-                }}
-              >
-                <Typography variant="h3Bold" sx={{}}>
-                  <Link to={"/signup"} style={{ textDecoration: "none", color: "inherit" }}>
-                    Sign up
-                  </Link>
-                </Typography>
-              </Button>
-            </Grid>
+          <Grid
+            item
+            xs={4}
+            sx={{
+              display: { xs: "none", md: "flex" },
+              justifyContent: "flex-end",
+            }}
+          >
+            <Button
+              style={{ textTransform: "none" }}
+              sx={{
+                color: "neutral.dark",
+                "&:hover": {
+                  backgroundColor: "primary.light",
+                },
+                textDecoration: "none",
+              }}
+            >
+              <Typography variant="h3Bold" sx={{}}>
+                <Link
+                  to={"/login"}
+                  style={{ textDecoration: "none", color: "inherit" }}
+                  data-testid="login-link"
+                >
+                  Log in
+                </Link>
+              </Typography>
+            </Button>
+
+            <Button
+              style={{ textTransform: "none" }}
+              sx={{
+                color: "neutral.dark",
+                "&:hover": {
+                  backgroundColor: "primary.light",
+                },
+              }}
+            >
+              <Typography variant="h3Bold" sx={{}}>
+                <Link
+                  to={"/signup"}
+                  style={{ textDecoration: "none", color: "inherit" }}
+                  data-testid="signup-link"
+                >
+                  Sign up
+                </Link>
+              </Typography>
+            </Button>
           </Grid>
         </Grid>
       </Toolbar>
@@ -104,7 +167,13 @@ const Navbar = ({ region }) => {
           padding: "10px",
         }}
       >
-        <IconButton size="large" edge="start" color="inherit" onClick={openNav} ref={iconButtonRef}>
+        <IconButton
+          size="large"
+          edge="start"
+          color="inherit"
+          onClick={openNav}
+          ref={iconButtonRef}
+        >
           <MenuIcon />
         </IconButton>
         <Menu
@@ -119,7 +188,6 @@ const Navbar = ({ region }) => {
           }}
         >
           <MenuList>
-            <MenuItem>{"Your region: " + region}</MenuItem>
             <MenuItem>Log in</MenuItem>
             <MenuItem>Sign up</MenuItem>
           </MenuList>
@@ -135,14 +203,6 @@ const Navbar = ({ region }) => {
       </Box>
     </AppBar>
   );
-};
-
-Navbar.propTypes = {
-  region: PropTypes.string.isRequired,
-};
-
-Navbar.defaultProps = {
-  region: "Jakarta",
 };
 
 export default Navbar;
