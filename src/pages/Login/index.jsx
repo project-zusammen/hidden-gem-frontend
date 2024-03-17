@@ -12,6 +12,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { EyeOutlined, EyeInvisibleOutlined } from "@ant-design/icons";
 import { login } from "../../api/login";
+import Cookies from "js-cookie";
 
 const Login = () => {
   const emailRegex = new RegExp(
@@ -26,7 +27,6 @@ const Login = () => {
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
   const [isEmailValid, setIsEmailValid] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-  const [token, setToken] = useState("");
 
   useEffect(() => {
     if (emailRegex.test(email)) {
@@ -54,7 +54,11 @@ const Login = () => {
       setErrorMessage("");
 
       if (response.status === "success") {
-        setToken(response.token);
+        Cookies.set("token", response?.token, {
+          sameSite: "None",
+          secure: true,
+          maxAge: 3600,
+        });
         navigate("/");
       }
     } catch (error) {
