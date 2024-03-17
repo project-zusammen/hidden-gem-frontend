@@ -41,6 +41,11 @@ const Navbar = ({ region }) => {
     }
   }, []);
 
+  const handleLogout = () => {
+    Cookies.remove("token");
+    setToken("");
+  };
+
   return (
     <AppBar
       position="static"
@@ -125,6 +130,39 @@ const Navbar = ({ region }) => {
                       style={{ textDecoration: "none", color: "inherit" }}
                     >
                       Sign up
+                    </Link>
+                  </Typography>
+                </Button>
+              </Grid>
+            </Grid>
+          )}
+          {token && (
+            <Grid
+              item
+              xs={4}
+              spacing={0}
+              container
+              justifyContent={"flex-end"}
+              sx={{ display: { xs: "none", md: "flex" } }}
+            >
+              <Grid item>
+                <Button
+                  style={{ textTransform: "none" }}
+                  sx={{
+                    color: "neutral.dark",
+                    "&:hover": {
+                      backgroundColor: "primary.light",
+                    },
+                    textDecoration: "none",
+                  }}
+                >
+                  <Typography variant="h3Bold" sx={{}}>
+                    <Link
+                      to={"/"}
+                      onClick={handleLogout}
+                      style={{ textDecoration: "none", color: "inherit" }}
+                    >
+                      Log out
                     </Link>
                   </Typography>
                 </Button>
