@@ -8,21 +8,36 @@ import {
   Button,
   IconButton,
 } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { EyeOutlined, EyeInvisibleOutlined } from "@ant-design/icons";
 import { login } from "../../api/login";
 
 const Login = () => {
+  const emailRegex = new RegExp(
+    /^[A-Za-z0-9_!#$%&'*+\/=?`{|}~^.-]+@[A-Za-z0-9.-]+$/,
+    "gm"
+  );
   const navigate = useNavigate();
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [isEmailEmpty, setIsEmailEmpty] = useState(false);
-  const [isDataExist, setIsDataExist] = useState(false);
-  const [passwordLength, setPasswordLength] = useState(false);
+  const [isButtonDisabled, setIsButtonDisabled] = useState(true);
+  const [isEmailValid, setIsEmailValid] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
   const [token, setToken] = useState("");
+
+  useEffect(() => {
+    if (emailRegex.test(email)) {
+      setIsEmailValid(true);
+    }
+    if (email.length > 0 && password.length > 0) {
+      setIsButtonDisabled(false);
+    } else {
+      setIsButtonDisabled(true);
+    }
+  }, [email, emailRegex, password]);
 
   const handleTogglePasswordVisibility = () => {
     setShowPassword((prevShowPassword) => !prevShowPassword);
@@ -30,24 +45,13 @@ const Login = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-
-    if (email.length === 0) {
-      setIsEmailEmpty(true);
-      return;
-    }
-
-    if (password.length < 4) {
-      setPasswordLength(true);
-      return;
-    }
-
     setIsLoading(true);
 
     try {
       const response = await login({ email, password });
-      console.log("response", response);
       setEmail("");
       setPassword("");
+      setErrorMessage("");
 
       if (response.status === "success") {
         setToken(response.token);
@@ -55,7 +59,7 @@ const Login = () => {
       }
     } catch (error) {
       if (error.response.data.status === "error") {
-        setIsDataExist(true);
+        setErrorMessage(error.response.data.message);
       } else {
         console.log(error);
       }
@@ -107,6 +111,11 @@ const Login = () => {
               data-testid="email-field"
               inputProps={{ "data-testid": "email-content" }}
             />
+            {!isEmailValid && email.length > 0 && (
+              <Typography variant="body2" sx={{ color: "red" }}>
+                Please enter a valid email address.
+              </Typography>
+            )}
             <Typography variant="body2">Password</Typography>
             <div style={{ position: "relative" }}>
               <TextField
@@ -134,6 +143,9 @@ const Login = () => {
                 {showPassword ? <EyeOutlined /> : <EyeInvisibleOutlined />}
               </IconButton>
             </div>
+            <Typography variant="body2" sx={{ color: "red" }}>
+              {errorMessage}
+            </Typography>
             <Button
               data-testid="login-button"
               variant="contained"
@@ -143,7 +155,7 @@ const Login = () => {
                 ":hover": { backgroundColor: "#0ff582" },
                 boxShadow: "none",
               }}
-              disable={isLoading}
+              disabled={isButtonDisabled || !isEmailValid || isLoading}
             >
               {!isLoading ? "Login" : "Loading ..."}
             </Button>
