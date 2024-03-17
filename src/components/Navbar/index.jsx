@@ -1,10 +1,22 @@
-import { AppBar, Toolbar, Typography, Grid, Box, Button, IconButton, Menu, MenuList, MenuItem } from "@mui/material";
-import React, { useRef, useState } from "react";
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  Grid,
+  Box,
+  Button,
+  IconButton,
+  Menu,
+  MenuList,
+  MenuItem,
+} from "@mui/material";
+import React, { useRef, useState, useEffect } from "react";
 import logo from "/images/Logo.png";
 import MenuIcon from "@mui/icons-material/Menu";
 import ArrowDropDown from "@mui/icons-material/ArrowDropDown";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
+import Cookies from "js-cookie";
 
 const Navbar = ({ region }) => {
   const [navStatus, setNavStatus] = useState(false);
@@ -19,8 +31,21 @@ const Navbar = ({ region }) => {
   if (!region) {
     region = "Jakarta";
   }
+
+  const [token, setToken] = useState("");
+
+  useEffect(() => {
+    const storedToken = Cookies.get("token");
+    if (storedToken) {
+      setToken(storedToken);
+    }
+  }, []);
+
   return (
-    <AppBar position="static" sx={{ bgcolor: "neutral.light", padding: "0 46px" }}>
+    <AppBar
+      position="static"
+      sx={{ bgcolor: "neutral.light", padding: "0 46px" }}
+    >
       <Toolbar sx={{ display: { xs: "none", md: "flex" }, height: "80px" }}>
         <Grid container alignItems="center" justifyContent="space-between">
           <Grid item xs={4}>
@@ -54,43 +79,58 @@ const Navbar = ({ region }) => {
             </Grid>
           </Grid>
 
-          <Grid item xs={4} spacing={0} container justifyContent={"flex-end"} sx={{ display: { xs: "none", md: "flex" } }}>
-            <Grid item>
-              <Button
-                style={{ textTransform: "none" }}
-                sx={{
-                  color: "neutral.dark",
-                  "&:hover": {
-                    backgroundColor: "primary.light",
-                  },
-                  textDecoration: "none",
-                }}
-              >
-                <Typography variant="h3Bold" sx={{}}>
-                  <Link to={"/login"} style={{ textDecoration: "none", color: "inherit" }}>
-                    Log in
-                  </Link>
-                </Typography>
-              </Button>
+          {!token && (
+            <Grid
+              item
+              xs={4}
+              spacing={0}
+              container
+              justifyContent={"flex-end"}
+              sx={{ display: { xs: "none", md: "flex" } }}
+            >
+              <Grid item>
+                <Button
+                  style={{ textTransform: "none" }}
+                  sx={{
+                    color: "neutral.dark",
+                    "&:hover": {
+                      backgroundColor: "primary.light",
+                    },
+                    textDecoration: "none",
+                  }}
+                >
+                  <Typography variant="h3Bold" sx={{}}>
+                    <Link
+                      to={"/login"}
+                      style={{ textDecoration: "none", color: "inherit" }}
+                    >
+                      Log in
+                    </Link>
+                  </Typography>
+                </Button>
+              </Grid>
+              <Grid item>
+                <Button
+                  style={{ textTransform: "none" }}
+                  sx={{
+                    color: "neutral.dark",
+                    "&:hover": {
+                      backgroundColor: "primary.light",
+                    },
+                  }}
+                >
+                  <Typography variant="h3Bold" sx={{}}>
+                    <Link
+                      to={"/signup"}
+                      style={{ textDecoration: "none", color: "inherit" }}
+                    >
+                      Sign up
+                    </Link>
+                  </Typography>
+                </Button>
+              </Grid>
             </Grid>
-            <Grid item>
-              <Button
-                style={{ textTransform: "none" }}
-                sx={{
-                  color: "neutral.dark",
-                  "&:hover": {
-                    backgroundColor: "primary.light",
-                  },
-                }}
-              >
-                <Typography variant="h3Bold" sx={{}}>
-                  <Link to={"/signup"} style={{ textDecoration: "none", color: "inherit" }}>
-                    Sign up
-                  </Link>
-                </Typography>
-              </Button>
-            </Grid>
-          </Grid>
+          )}
         </Grid>
       </Toolbar>
       <Box
@@ -104,7 +144,13 @@ const Navbar = ({ region }) => {
           padding: "10px",
         }}
       >
-        <IconButton size="large" edge="start" color="inherit" onClick={openNav} ref={iconButtonRef}>
+        <IconButton
+          size="large"
+          edge="start"
+          color="inherit"
+          onClick={openNav}
+          ref={iconButtonRef}
+        >
           <MenuIcon />
         </IconButton>
         <Menu
