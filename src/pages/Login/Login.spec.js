@@ -73,7 +73,7 @@ describe("Login", () => {
     );
 
     const passwordInputField = screen.getByTestId("password-content");
-    const showPasswordButton = screen.getByTestId("hide-password"); // initially hidden
+    const showPasswordButton = screen.getByTestId("hide-password");
 
     fireEvent.click(showPasswordButton);
     expect(passwordInputField).toHaveAttribute("type", "text");
