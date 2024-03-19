@@ -35,8 +35,8 @@ export default function ReviewCard({ title, content, vote }) {
         >
           {vote} Upvotes
         </Button>
-        <Button size="small" color="secondary" variant="contained">
-          View
+        <Button data-testid="detail" size="small">
+          Learn More
         </Button>
       </CardActions>
     </Card>

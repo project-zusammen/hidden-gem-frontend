@@ -26,22 +26,113 @@ export default function Body() {
   };
   console.log(reviews);
   return (
-    <div className="slider-container" data-testid="review-slider">
-      <div className="horizontal-cards-container">
+<<<<<<<<< Temporary merge branch 1
+    // <Grid container spacing={3} marginTop={5} marginBottom={13}>
+    //   {/* Main Content Sections */}
+    //   <Grid item xs={4} md={4} lg={2}></Grid>
+    //   <Grid item xs={4} md={4} lg={8}></Grid>
+    //   <Grid item xs={4} md={4} lg={2}></Grid>
+    //   <Grid item xs={4} md={4} lg={2}></Grid>
+    //   <Grid item xs={4} md={4} lg={8}>
+    //     <Typography variant="h1" gutterBottom textAlign={"center"}>
+    //       New Posts
+    //     </Typography>
+    //   </Grid>
+    //   <Grid item xs={4} md={4} lg={2}></Grid>
+    //   <Grid item xs={4} md={4} lg={2}></Grid>
+    //   <Grid item xs={4} md={4} lg={8}>
+    //     <Grid container spacing={2} xs={12}>
+    //       <Grid item xs={3}>
+    //         <Card>{/* Card content here */}</Card>
+    //       </Grid>
+    //       <Grid item xs={3}>
+    //         <Card>{/* Card content here */}</Card>
+    //       </Grid>
+    //       <Grid item xs={3}>
+    //         <Card>{/* Card content here */}</Card>
+    //       </Grid>
+    //     </Grid>
+    //   </Grid>
+    //   <Grid item xs={4} md={4} lg={2}></Grid>
+    //   <Grid item xs={4} md={4} lg={2}></Grid>
+    //   <Grid item xs={4} md={4} lg={8}></Grid>
+    //   {/* <Grid item xs={4} md={4} lg={2}></Grid> */}
+    // </Grid>
+    <>
+      <h1 className="body-post">New Reviews</h1>
+      <div className="slider-container">
         <Slider {...settings}>
-          {reviews &&
-            reviews.map((review) => {
-              return (
-                <Cards
-                  key={review.id}
-                  title={review.title}
-                  content={review.content}
-                  vote={review.upvotes}
-                />
-              );
-            })}
+          <div>
+            <Card />
+          </div>
+          <div>
+            <Card />
+          </div>
+          <div>
+            <Card />
+          </div>
+          <div>
+            <Card />
+          </div>
+          <div>
+            <Card />
+          </div>
         </Slider>
       </div>
-    </div>
+    </>
+=========
+    <Grid data-testid="body" container spacing={3} marginTop={5} marginBottom={13}>
+      {/* Main Content Sections */}
+      <Grid item xs={4} md={4} lg={2}>
+      </Grid>
+      <Grid item xs={4} md={4} lg={8}>
+      </Grid>
+      <Grid item xs={4} md={4} lg={2}>
+      </Grid>
+      <Grid item xs={4} md={4} lg={2}>
+      </Grid>
+      <Grid item xs={4} md={4} lg={8}>
+        <Typography variant="h1" gutterBottom textAlign={"center"}>
+          New Reviews
+        </Typography>
+      </Grid>
+      <Grid item xs={4} md={4} lg={2}>
+      </Grid>
+      <Grid item xs={4} md={4} lg={2}>
+      </Grid>
+      <Grid item xs={4} md={4} lg={8}>
+        <Grid container spacing={2} xs={12}>
+          <Grid item xs={3}>
+            <Card>
+              {/* Card content here */}
+            </Card>
+          </Grid>
+          <Grid item xs={3}>
+            <Card>
+              {/* Card content here */}
+            </Card>
+          </Grid>
+          <Grid item xs={3}>
+            <Card>
+              {/* Card content here */}
+            </Card>
+          </Grid>
+          <Grid item xs={3}>
+            <Card>
+              {/* Card content here */}
+            </Card>
+          </Grid>
+        </Grid>
+      </Grid>
+      <Grid item xs={4} md={4} lg={2}>
+      </Grid>
+      <Grid item xs={4} md={4} lg={2}>
+      </Grid>
+      <Grid item xs={4} md={4} lg={8}>
+      </Grid>
+      <Grid item xs={4} md={4} lg={2}>
+      </Grid>
+    </Grid>
+>>>>>>>>> Temporary merge branch 2
   );
 }
