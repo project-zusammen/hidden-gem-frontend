@@ -24,7 +24,7 @@ export default function Body() {
     slidesToScroll: 1,
     initialSlide: 0,
   };
-
+  console.log(reviews);
   return (
     <div className="slider-container" data-testid="review-slider">
       <div className="horizontal-cards-container">
