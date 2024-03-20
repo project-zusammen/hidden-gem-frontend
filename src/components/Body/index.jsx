@@ -1,10 +1,10 @@
-
 import Slider from "react-slick";
+import { Typography, Grid } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import Cards from "../Card";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import "./styles.css";
+import "./index.css";
 import { getReview } from "../../api/review";
 
 export default function Body() {
@@ -17,9 +17,6 @@ export default function Body() {
       setReviews(data.data);
     })();
   }, []);
-
-
-
 
   const settings = {
     dots: true,
@@ -57,24 +54,31 @@ export default function Body() {
   };
 
   return (
-
-    <div className="slider-container" data-testid="review-slider">
-      <div className="horizontal-cards-container">
-        <Slider {...settings}>
-          {reviews &&
-            reviews.map((review) => {
-              return (
-                <Cards
-                  key={review.id}
-                  title={review.title}
-                  content={review.content}
-                  vote={review.upvotes}
-                />
-              );
-            })}
-        </Slider>
+    <Grid data-testid="body">
+      <Typography
+        variant="h1"
+        className="body-post"
+        data-testid="new-reviews-title"
+      >
+        New Reviews
+      </Typography>
+      <div className="slider-container" data-testid="review-slider">
+        <div className="horizontal-cards-container">
+          <Slider {...settings}>
+            {reviews &&
+              reviews.map((review) => {
+                return (
+                  <Cards
+                    key={review.id}
+                    title={review.title}
+                    content={review.content}
+                    vote={review.upvotes}
+                  />
+                );
+              })}
+          </Slider>
+        </div>
       </div>
-    </div>
-
+    </Grid>
   );
 }
