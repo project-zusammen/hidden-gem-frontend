@@ -1,4 +1,3 @@
-
 import React from "react";
 import { TextField, Box, IconButton } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
@@ -17,21 +16,6 @@ const SearchBarWithTabs = () => {
         marginBottom: "50px",
       }}
     >
-      <Tabs
-        value={currentTab}
-        onChange={handleChange}
-        aria-label="Search tabs"
-        // textColor="neutral"
-        // indicatorColor="neutral.dark"
-      >
-        <Tab label="Food" />
-        <Tab label="Hotel" />
-        <Tab label="Cafe" />
-        <Tab label="Outdoor" />
-        <Tab label="Entertainment" />
-        <Tab label="Shopping" />
-      </Tabs>
-
       <Category />
 
       <Box sx={{ display: "flex", alignItems: "center", marginTop: 2 }}>
