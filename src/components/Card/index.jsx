@@ -10,16 +10,20 @@ import PropTypes from "prop-types";
 
 export default function ReviewCard({ title, content, vote }) {
   return (
+
     <Card sx={{ width: 250, height: 380 }}>
+
       <CardMedia sx={{ height: 140 }} image={image} title="green iguana" />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
           {title} New reviews
         </Typography>
+
         <Typography variant="body2" color="text.secondary">
           {content}
         </Typography>
       </CardContent>
+
       <CardActions
         sx={{
           display: "flex",
@@ -32,11 +36,22 @@ export default function ReviewCard({ title, content, vote }) {
           sx={{
             color: "primary.light",
           }}
+
         >
           {vote} Upvotes
+         
         </Button>
-        <Button data-testid="detail" size="small">
-          Learn More
+        <Button
+          size="small"
+          color="secondary"
+          variant="contained"
+          className="view"
+          sx={{
+            marginRight: "25px",
+          }}
+          data-testid="detail"
+        >
+          View
         </Button>
       </CardActions>
     </Card>

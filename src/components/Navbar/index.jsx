@@ -41,20 +41,6 @@ const Navbar = ({ region }) => {
                 <Button
                   style={{ textTransform: "none" }}
                   sx={{
-                    height: "100%",
-                    color: "neutral.dark",
-                    "&:hover": {
-                      backgroundColor: "primary.light",
-                    },
-                  }}
-                >
-                  <Typography variant="h3">Home</Typography>
-                </Button>
-              </Grid>
-              <Grid item>
-                <Button
-                  style={{ textTransform: "none" }}
-                  sx={{
                     color: "neutral.dark",
                     "&:hover": {
                       backgroundColor: "primary.light",
@@ -133,7 +119,6 @@ const Navbar = ({ region }) => {
           }}
         >
           <MenuList>
-            <MenuItem>Home</MenuItem>
             <MenuItem>{"Your region: " + region}</MenuItem>
             <MenuItem>Log in</MenuItem>
             <MenuItem>Sign up</MenuItem>

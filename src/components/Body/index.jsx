@@ -1,3 +1,4 @@
+
 import Slider from "react-slick";
 import React, { useEffect, useState } from "react";
 import Cards from "../Card";
@@ -17,15 +18,46 @@ export default function Body() {
     })();
   }, []);
 
+
+
+
   const settings = {
-    infinite: true,
+    dots: true,
+    infinite: false,
     speed: 500,
-    slidesToShow: reviewsPerSlide,
-    slidesToScroll: 1,
+    slidesToShow: 3,
+    slidesToScroll: 3,
     initialSlide: 0,
+    responsive: [
+      {
+        breakpoint: 1280,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 960,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 2,
+        },
+      },
+      {
+        breakpoint: 750,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
-  console.log(reviews);
+
   return (
+
     <div className="slider-container" data-testid="review-slider">
       <div className="horizontal-cards-container">
         <Slider {...settings}>
@@ -43,5 +75,6 @@ export default function Body() {
         </Slider>
       </div>
     </div>
+
   );
 }

@@ -16,9 +16,17 @@ body {
   font-family: "Open Sans", sans-serif; /* Add your preferred font-family */
 }
 
-.body-post {
-  text-align: center;
+@media (max-width: 768px) {
+  .slider-container {
+    margin: 35px auto;
+    width: 375px;
+    height: 500px;
+    border: 1px solid #50c878;
+    background-color: #50c878;
+    border-radius: 15px;
+  }
 }
+
 
 .slider-container {
   background-color: #50c878;
@@ -32,4 +40,15 @@ body {
 
 .slick-prev {
   background-color: green;
+}
+@media (max-width: 390px) {
+  .slider-container {
+    margin: 35px auto;
+    width: 375px;
+    height: 500px;
+    border: 1px solid #50c878;
+    background-color: #50c878;
+    border-radius: 15px;
+  }
+
 }
