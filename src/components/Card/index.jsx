@@ -13,7 +13,11 @@ export default function ReviewCard({ title, content, vote }) {
     <Card sx={{ width: 250, height: 380 }} data-testid="card-title">
       <CardMedia sx={{ height: 140 }} image={image} title="green iguana" />
       <CardContent>
-        <Typography variant="body2" color="text.secondary">
+        <Typography
+          variant="body2"
+          color="text.secondary"
+          data-testid="card-text"
+        >
           {content}
         </Typography>
       </CardContent>
