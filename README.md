@@ -31,12 +31,14 @@ List the main features of your application.
 
    ```
 
-2. Run `npm install`
+2. Copy `.env-template` and paste the file in the root directory, rename the file to `.env` and then fill in the value
 
-3. Run `npm run dev`
+3. Run `npm install`
 
-4. Run the test: `npm test`
+4. Run `npm run dev`
 
-5. Run a test on a specific file: `npm test {file-path}`
+5. Run the test: `npm test`
 
-6. Run and watch the test `npm run test -- --watch {file-path}`
+6. Run a test on a specific file: `npm test {file-path}`
+
+7. Run and watch the test `npm run test -- --watch {file-path}`
