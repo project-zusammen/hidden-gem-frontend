@@ -10,12 +10,15 @@ import PropTypes from "prop-types";
 
 export default function ReviewCard({ title, content, vote }) {
   return (
-
-    <Card sx={{ width: 250, height: 380 }}>
-
+    <Card sx={{ width: 250, height: 380 }} data-testid="card-title">
       <CardMedia sx={{ height: 140 }} image={image} title="green iguana" />
       <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
+        <Typography
+          gutterBottom
+          variant="h5"
+          component="div"
+          data-testid="card-text"
+        >
           {title} New reviews
         </Typography>
 
@@ -32,14 +35,13 @@ export default function ReviewCard({ title, content, vote }) {
         }}
       >
         <Button
+          data-testid="upvotes"
           size="small"
           sx={{
             color: "primary.light",
           }}
-
         >
           {vote} Upvotes
-         
         </Button>
         <Button
           size="small"
