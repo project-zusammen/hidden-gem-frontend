@@ -6,41 +6,30 @@ import CardActions from "@mui/material/CardActions";
 import Typography from "@mui/material/Typography";
 import { Button } from "@mui/material";
 import image from "../../images/raja-ampat.jpeg";
+import PropTypes from "prop-types";
 
-// const ExpandMore = styled((props) => {
-//   // eslint-disable-next-line no-unused-vars
-//   const { expand, other } = props;
-//   return <IconButton {...other} />;
-// })(({ theme, expand }) => ({
-//   transform: !expand ? "rotate(0deg)" : "rotate(180deg)",
-//   marginLeft: "auto",
-//   transition: theme.transitions.create("transform", {
-//     duration: theme.transitions.duration.shortest,
-//   }),
-// }));
-
-export default function ReviewCard() {
+export default function ReviewCard({ title, content, vote }) {
   return (
-    <Card sx={{ width: 280, height: 380 }}>
+    <Card sx={{ width: 250, height: 380 }} data-testid="card-component">
       <CardMedia sx={{ height: 140 }} image={image} title="green iguana" />
       <CardContent>
         <Typography
-          data-testid="card-title"
           gutterBottom
           variant="h5"
           component="div"
+          data-testid="card-title"
         >
-          Lizard
+          {title}
         </Typography>
         <Typography
-          data-testid="card-text"
           variant="body2"
           color="text.secondary"
+          data-testid="card-text"
         >
-          Lizards are a widespread group of squamate reptiles, with over 6,000
-          species, ranging across all continents except Antarctica
+          {content}
         </Typography>
       </CardContent>
+
       <CardActions
         sx={{
           display: "flex",
@@ -49,14 +38,13 @@ export default function ReviewCard() {
         }}
       >
         <Button
+          data-testid="upvotes"
           size="small"
           sx={{
             color: "primary.light",
           }}
-          className="vote"
-          data-testid="upvotes"
         >
-          10 Upvotes
+          {vote} Upvotes
         </Button>
         <Button
           size="small"
@@ -74,3 +62,15 @@ export default function ReviewCard() {
     </Card>
   );
 }
+
+ReviewCard.defaultProps = {
+  title: "Raja Ampat",
+  content: "Raja Ampat is a paradise for diving enthusiasts",
+  vote: 100,
+};
+
+ReviewCard.propTypes = {
+  title: PropTypes.string,
+  content: PropTypes.string,
+  vote: PropTypes.number,
+};

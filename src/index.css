@@ -27,6 +27,19 @@ body {
   }
 }
 
+.slider-container {
+  background-color: #50c878;
+  width: 1000px;
+  margin: 0 auto;
+}
+
+.slick-next {
+  background-color: green;
+}
+
+.slick-prev {
+  background-color: green;
+}
 @media (max-width: 390px) {
   .slider-container {
     margin: 35px auto;

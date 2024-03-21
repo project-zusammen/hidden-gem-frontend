@@ -17,6 +17,7 @@ const SearchBarWithTabs = () => {
       }}
     >
       <Category />
+
       <Box sx={{ display: "flex", alignItems: "center", marginTop: 2 }}>
         <TextField label="Search" size="small" data-testid="label-search" />
         <IconButton

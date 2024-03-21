@@ -1,12 +1,23 @@
-import React from "react";
-import { Typography, Grid } from "@mui/material";
-import Card from "../Card";
 import Slider from "react-slick";
+import { Typography, Grid } from "@mui/material";
+import React, { useEffect, useState } from "react";
+import Cards from "../Card";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./index.css";
+import { getReview } from "../../api/review";
 
-const Body = () => {
+export default function Body() {
+  const reviewsPerSlide = 3;
+  const [reviews, setReviews] = useState([]);
+
+  useEffect(() => {
+    (async () => {
+      const data = await getReview();
+      setReviews(data.data);
+    })();
+  }, []);
+
   const settings = {
     dots: true,
     infinite: false,
@@ -41,6 +52,7 @@ const Body = () => {
       },
     ],
   };
+
   return (
     <Grid data-testid="body">
       <Typography
@@ -50,27 +62,23 @@ const Body = () => {
       >
         New Reviews
       </Typography>
-      <Grid className="slider-container" data-testid="review-sliders">
-        <Slider {...settings}>
-          <Grid item>
-            <Card />
-          </Grid>
-          <Grid item>
-            <Card />
-          </Grid>
-          <Grid item>
-            <Card />
-          </Grid>
-          <Grid item>
-            <Card />
-          </Grid>
-          <Grid item>
-            <Card />
-          </Grid>
-        </Slider>
-      </Grid>
+      <div className="slider-container" data-testid="review-slider">
+        <div className="horizontal-cards-container">
+          <Slider {...settings}>
+            {reviews &&
+              reviews.map((review) => {
+                return (
+                  <Cards
+                    key={review.id}
+                    title={review.title}
+                    content={review.content}
+                    vote={review.upvotes}
+                  />
+                );
+              })}
+          </Slider>
+        </div>
+      </div>
     </Grid>
   );
-};
-
-export default Body;
+}

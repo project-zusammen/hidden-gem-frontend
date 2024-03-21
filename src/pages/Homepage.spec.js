@@ -14,6 +14,15 @@ jest.mock("../api/category", () => ({
   ),
 }));
 
+jest.mock('../api/review', () => ({
+  getReview: jest.fn(() => Promise.resolve({ data: 
+    [
+      { public_id: '1', category_id: 'Category 1', title: 'Title 1', content: 'Content 1', location: 'Location 1' }, 
+      { public_id: '2', category_id: 'Category 2', title: 'Title 2', content: 'Content 2', location: 'Location 2'}
+    ] 
+  })),
+}));
+
 describe("Homepage", () => {
   test("renders search bar", () => {
     render(<Homepage />);
